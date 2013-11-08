@@ -10,19 +10,27 @@
     </h:head>
 
     <h:body>
-        <!-- TODO TM
-        <h:graphicImage name="amasoon.png"/>
-        -->
+        <h:graphicImage name="img/amasoon.png"/>
         <ui:composition template="./resources/userTemplate.xhtml">
 
             <ui:define name="content">
-                <!-- 
-                -->
                 <ui:include src="./resources/pageTitle.xhtml" >
                     <ui:param name="title" value="Catalog Search" />
                 </ui:include>
-                <!-- TODO Markus  -->
-                TODO TB  Hier kommt die Search-Tabelle...
+
+                <h:form id="search" >
+                    <h:inputText id="keywords" value="" required="true" />&#xa0;
+                    <h:commandButton class="btn btn-primary" action="#{catalogBean.searchBooks}" value="#{texts.search}" type="submit"/>&#xa0;
+                    <h:message for="keywords" styleClass="error"/>
+                    <br/>
+                    <!-- TODO Markus  -->
+                    TODO TB  Hier kommt die Search-Tabelle...
+                    <br/>
+                    <i class="icon-search" />
+                    <br/>
+                    <i class="icon-shopping-cart" />
+                    <br/>
+                </h:form>
             </ui:define>
 
         </ui:composition>
