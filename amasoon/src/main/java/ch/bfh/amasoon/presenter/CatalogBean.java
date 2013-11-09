@@ -5,10 +5,12 @@
  */
 package ch.bfh.amasoon.presenter;
 
+import com.google.common.base.Strings;
 import ch.bfh.amasoon.model.catalog.Book;
 import ch.bfh.amasoon.model.catalog.CatalogService;
 import ch.bfh.amasoon.util.MessageFactory;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
@@ -31,7 +33,14 @@ public class CatalogBean implements Serializable {
     }
 
     public List<Book> getBooks() {
+        if (books == null) {
+            books = new ArrayList<>();
+        }
         return books;
+    }
+
+    private void setBooks(List<Book> books) {
+        this.books = books;
     }
 
     public Book getSelectedBook() {
@@ -39,11 +48,11 @@ public class CatalogBean implements Serializable {
     }
 
     public void searchBooks() {
-        if (keywords.isEmpty()) {
-            books.clear();
+        if (Strings.isNullOrEmpty(keywords)) {
+            getBooks().clear();
         } else {
-            books = catalogService.searchBooks(keywords.split("\\s+"));
-            if (books.isEmpty()) {
+            setBooks(catalogService.searchBooks(keywords.split("\\s+")));
+            if (getBooks().isEmpty()) {
                 MessageFactory.info("org.books.Bookstore.NO_BOOKS_FOUND");
             }
         }
