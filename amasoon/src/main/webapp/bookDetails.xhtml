@@ -2,8 +2,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" >
 
     <h:head>
         <title>Book Detail</title>
@@ -18,8 +17,30 @@
                     <ui:param name="title" value="Book Detail" />
                 </ui:include>
 
-                <!-- TODO Markus  -->
-                Hier kommt die Detail-Tabelle...
+                <h:form id="main">
+                    <br/><br/>
+                    <h:panelGrid class="table table-hover" columns="2">
+                        <h:outputText value="#{translations.isbn}"/>
+                        <h:outputText value="#{catalogBean.selectedBook.isbn}"/>
+                        <h:outputText value="#{translations.title}"/>
+                        <h:outputText value="#{catalogBean.selectedBook.title}"/>
+                        <h:outputText value="#{translations.authors}"/>
+                        <h:outputText value="#{catalogBean.selectedBook.authors}"/>
+                        <h:outputText value="#{translations.publisher}"/>
+                        <h:outputText value="#{catalogBean.selectedBook.publisher}"/>
+                        <h:outputText value="#{translations.publicationDate}"/>
+                        <h:outputText value="#{catalogBean.selectedBook.publicationDate}"/>
+                        <h:outputText value="#{translations.binding}"/>
+                        <h:outputText value="#{catalogBean.selectedBook.binding}"/>
+                        <h:outputText value="#{translations.numberOfPages}"/>
+                        <h:outputText value="#{catalogBean.selectedBook.numberOfPages}"/>
+                        <h:outputText value="#{translations.price}"/>
+                        <h:outputText value="#{catalogBean.selectedBook.price}"/>
+                    </h:panelGrid>
+                    <br/>
+                    <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>
+                </h:form>
+
             </ui:define>
 
         </ui:composition>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<catalog>
+	<book>
+		<isbn>0596009208</isbn>
+		<title>Head First Java (2nd Edition)</title>
+		<authors>Kathy Sierra, Bert Bates</authors>
+		<publisher>O'Reilly</publisher>
+		<publicationDate>2005-02-09</publicationDate>
+		<binding>Paperback</binding>
+		<numberOfPages>720</numberOfPages>
+		<price>44.95</price>
+	</book>
+	<book>
+		<isbn>0596007736</isbn>
+		<title>Java In A Nutshell (5th Edition)</title>
+		<authors>David Flanagan</authors>
+		<publisher>O'Reilly</publisher>
+		<publicationDate>2005-03-15</publicationDate>
+		<binding>Paperback</binding>
+		<numberOfPages>1254</numberOfPages>
+		<price>44.95</price>
+	</book>
+	<book>
+		<isbn>0471777102</isbn>
+		<title>Professional Java JDK 6 Edition</title>
+		<authors>W. Clay Richardson, Donald Avondolio, Scot Schrager, Mark W. Mitchell, Jeff Scanlon</authors>
+		<publisher>Wrox</publisher>
+		<publicationDate>2007-01-10</publicationDate>
+		<binding>Paperback</binding>
+		<numberOfPages>741</numberOfPages>
+		<price>39.99</price>
+	</book>
+	<book>
+		<isbn>0131872486</isbn>
+		<title>Thinking in Java (4th Edition)</title>
+		<authors>Bruce Eckel</authors>
+		<publisher>Prentice Hall PTR</publisher>
+		<publicationDate>2006-02-10</publicationDate>
+		<binding>Paperback</binding>
+		<numberOfPages>1150</numberOfPages>
+		<price>64.99</price>
+	</book>
+	<book>
+		<isbn>0596006209</isbn>
+		<title>Java Examples in a Nutshell (3rd Edition)</title>
+		<authors>David Flanagan</authors>
+		<publisher>O'Reilly</publisher>
+		<publicationDate>2004-01-01</publicationDate>
+		<binding>Paperback</binding>
+		<numberOfPages>720</numberOfPages>
+		<price>39.95</price>
+	</book>
+	<book>
+		<isbn>0321246780</isbn>
+		<title>The Java Language Specification (3rd Edition)</title>
+		<authors>James Gosling, Bill Joy, Guy Steele, Gilad Bracha</authors>
+		<publisher>Prentice Hall PTR</publisher>
+		<publicationDate>2005-06-14</publicationDate>
+		<binding>Paperback</binding>
+		<numberOfPages>688</numberOfPages>
+		<price>49.99</price>
+	</book>
+	<book>
+		<isbn>0321334205</isbn>
+		<title>The Java Tutorial: A Short Course on the Basics (4th Edition)</title>
+		<authors>Sharon Zakhour, Scott Hommel, Jacob Royal, Isaac Rabinovitch, Tom Risser, Mark Hoeber</authors>
+		<publisher>Prentice Hall PTR</publisher>
+		<publicationDate>2006-09-29</publicationDate>
+		<binding>Paperback</binding>
+		<numberOfPages>672</numberOfPages>
+		<price>49.99</price>
+	</book>
+	<book>
+		<isbn>0596007019</isbn>
+		<title>Java Cookbook (2nd Edition)</title>
+		<authors>Ian F. Darwin</authors>
+		<publisher>O'Reilly</publisher>
+		<publicationDate>2004-06-14</publicationDate>
+		<binding>Paperback</binding>
+		<numberOfPages>862</numberOfPages>
+		<price>49.95</price>
+	</book>
+	<book>
+		<isbn>0596008732</isbn>
+		<title>Learning Java (3rd Edition)</title>
+		<authors>Patrick Niemeyer, Jonathan Knudsen</authors>
+		<publisher>O'Reilly</publisher>
+		<publicationDate>2005-05-20</publicationDate>
+		<binding>Paperback</binding>
+		<numberOfPages>976</numberOfPages>
+		<price>44.95</price>
+	</book>
+	<book>
+		<isbn>0321349806</isbn>
+		<title>The Java Programming Language (4th Edition)</title>
+		<authors>Ken Arnold, James Gosling, David Holmes</authors>
+		<publisher>Prentice Hall PTR</publisher>
+		<publicationDate>2005-08-17</publicationDate>
+		<binding>Paperback</binding>
+		<numberOfPages>928</numberOfPages>
+		<price>54.99</price>
+	</book>
+</catalog>
