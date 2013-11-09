@@ -12,7 +12,7 @@
         <message-bundle>bundles.messages</message-bundle>
         <resource-bundle>
             <base-name>bundles.translations</base-name>
-            <var>texts</var>
+            <var>translations</var>
         </resource-bundle>
     </application>
 

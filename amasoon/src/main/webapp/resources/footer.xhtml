@@ -5,13 +5,12 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Footer</title>
-        <h:outputStylesheet name="./bootstrap.css"/>
     </h:head>
     <h:body>
-        <ui:composition >
-            <ui:composition> 		
-                <p>#{text}</p>
-            </ui:composition>
+        <ui:composition>
+            <ui:include src="copyright.xhtml"/><br/>
+            <ui:include src="disclaimer.xhtml"/>
+            <ui:include src="locale.xhtml"/>
         </ui:composition>
     </h:body>
 </html>

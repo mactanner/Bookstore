@@ -5,14 +5,13 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Header</title>
-    </h:head>
+    </h:head> 
     <h:body>
-        <ui:composition >
-            <ui:composition> 		
-                <h1>#{text}</h1>
-                TODO SB Warenkorb und Login
-            </ui:composition>
+        <ui:composition>
+            <h:graphicImage name="img/amasoon.png"/>
+            <ui:include src="cart.xhtml"/>
+            <ui:include src="login.xhtml"/><br/>
+            <h1 align="center">#{text}</h1>
         </ui:composition>
     </h:body>
 </html>
-

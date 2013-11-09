@@ -5,12 +5,11 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Header</title>
-        <h:outputStylesheet name="./css/bootstrap.css"/>
-    </h:head>
+    </h:head> 
     <h:body>
-        <ui:composition >
-                <h3>#{title}</h3>
+        <ui:composition>
+            <h:outputText value="#{translations.cart}" /> 
+            <i class="icon-shopping-cart" />
         </ui:composition>
     </h:body>
 </html>
-
