@@ -4,10 +4,10 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Login</title>
+        <title>Login Page</title>
     </h:head>
     <h:body>
-        <ui:composition id="loginfrom">
+        <ui:composition>
             <h:form >
                 <h:panelGrid columns="3">
                     <h:outputText value="Username:"/>
@@ -17,8 +17,9 @@
                     <h:inputSecret id="password" required="true" requiredMessage="Please enter your password"/>
                     <h:message for="password" errorClass="errorMessage"/>
                 </h:panelGrid>
-                <h:commandButton value="Login" />
-                <p/>
+                <h:commandLink class="btn" action="loginPage" value="#{translations.login}">
+                    <i class="icon-user" /> 
+                </h:commandLink>
             </h:form>
         </ui:composition>
     </h:body>

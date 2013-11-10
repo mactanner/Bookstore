@@ -4,13 +4,13 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Header</title>
+        <title>Login</title>
     </h:head> 
     <h:body>
         <ui:composition>
             <h:form>
-                <h:commandLink class="btn">
-                    <i class="icon-user" /> #{translations.login}
+                <h:commandLink class="btn" action="loginPage" value="#{translations.login}">
+                    <i class="icon-user" /> 
                 </h:commandLink>
             </h:form>
         </ui:composition>

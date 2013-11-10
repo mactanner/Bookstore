@@ -2,10 +2,12 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" >
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets" 
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>Book Detail</title>
+        <f:view locale="#{userLocale.locale}"/>
     </h:head>
 
     <h:body>
@@ -14,7 +16,7 @@
 
             <ui:define name="content">
                 <ui:include src="./resources/pageTitle.xhtml" >
-                    <ui:param name="title" value="Book Detail" />
+                    <ui:param name="title" value="#{translations.catalogDetailTitle}" />
                 </ui:include>
 
                 <h:form id="main">

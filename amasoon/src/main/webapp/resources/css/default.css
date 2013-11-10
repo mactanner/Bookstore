@@ -1,58 +1,29 @@
-body {
-    background-color: #ffffff;
-    font-size: 12px;
-    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    color: #000000;  
-    margin: 10px;
+/*!
+ * for invisible components
+ *
+ */
+
+.header_column1 {
+    width: 20%;
 }
 
-h1 {
-    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    border-bottom: 1px solid #AFAFAF; 
-    font-size:  35px;
-    font-weight: bold;
-    margin: 0px;
-    padding: 0px;
-    color: cornflowerblue;
+.header_column2 {
+    width: 70%;
 }
 
-h3 {
-    font-family: Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    border-bottom: 1px solid #AFAFAF; 
-    font-size:  18px;
-    font-weight: bold;
-    margin: 0px;
-    padding: 0px;
-    color: cornflowerblue;
+.header_column3 {
+    width: 10%;
 }
 
-copyright {
-    background-color: #ffffff;
-    font-size: 8px;
-    font-weight: bold;
-    font-stretch: expanded;
-    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    color: black;  
-    margin: 10px;
+.footer_column1 {
+    width: 70%;
 }
 
-disclaimer {
-    background-color: #ffffff;
-    font-size: 8px;
-    font-stretch: condensed;
-    font-family: Verdana, "Verdana CE",  Arial, "Arial CE", "Lucida Grande CE", lucida, "Helvetica CE", sans-serif;
-    color: graytext;  
-    margin: 10px;
+.footer_column2 {
+    width: 20%;
 }
 
-a:link, a:visited {
-    color: #045491;
-    font-weight : bold;
-    text-decoration: none;
+.footer_column3 {
+    width: 10%;
 }
 
-a:link:hover, a:visited:hover  {
-    color: #045491;
-    font-weight : bold;
-    text-decoration : underline;
-}

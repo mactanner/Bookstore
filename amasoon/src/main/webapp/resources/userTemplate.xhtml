@@ -6,7 +6,7 @@
 
     <h:head>
         <title>Facelets Template for Users</title>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <h:outputStylesheet name="./css/bootstrap.css"/>
         <h:outputStylesheet name="./css/layout.css"/>
     </h:head>
@@ -16,7 +16,7 @@
         <div id="top">
             <ui:insert name="top">
                 <ui:include src="header.xhtml" >
-                    <ui:param name="text" value="Bookstore" />
+                    <ui:param name="text" value="#{translations.applicationTitle}" />
                 </ui:include>
             </ui:insert>
         </div>

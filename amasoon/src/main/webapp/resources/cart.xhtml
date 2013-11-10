@@ -4,12 +4,15 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
-        <title>Header</title>
+        <title>Cart</title>
     </h:head> 
     <h:body>
         <ui:composition>
-            <h:outputText value="#{translations.cart}" /> 
-            <i class="icon-shopping-cart" />
+            <h:form>
+                <h:commandLink class="btn" value="#{translations.cart}">
+                    <i class="icon-shopping-cart" /> 
+                </h:commandLink>
+            </h:form>
         </ui:composition>
     </h:body>
 </html>

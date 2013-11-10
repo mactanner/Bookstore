@@ -1,4 +1,4 @@
-package ch.bfh.amasoon.view;
+package ch.bfh.amasoon.presenter;
 
 import com.google.common.base.Objects;
 import java.io.Serializable;
@@ -20,7 +20,7 @@ public class UserLocaleBean implements Serializable {
     private Locale locale;
 
     public String getLocale() {
-        return Objects.firstNonNull(locale, fromHttpRequest()).getLanguage();
+        return Objects.firstNonNull(locale, fromHttpRequest()).getLanguage().toUpperCase();
     }
 
     private Locale fromHttpRequest() {

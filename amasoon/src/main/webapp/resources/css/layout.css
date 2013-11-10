@@ -1,3 +1,7 @@
+/*!
+ * for layouting frame
+ *
+ */
 
 #top {
     position: relative;
@@ -37,17 +41,18 @@
 .center_content {
     position: relative;
     padding: 5px;
-    height: 600px;
+    margin: 10px 10px 10px 10px;
+    height: 700px;
 }
 
 .left_content {
     padding: 5px;
-    margin-left: 170px;
+    margin: 10px 10px 10px 10px;
 }
 
 .right_content {
     padding: 5px;
-    margin: 0px 170px 0px 170px;
+    margin: 10px 10px 10px 10px;
 }
 
 
