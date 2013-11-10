@@ -8,10 +8,14 @@
     </h:head> 
     <h:body>
         <ui:composition>
-            <h:graphicImage name="img/amasoon.png"/>
-            <ui:include src="cart.xhtml"/>
-            <ui:include src="login.xhtml"/><br/>
-            <h1 align="center">#{text}</h1>
+            <div style="float:left;">
+                <h:graphicImage name="img/amasoon.png"/>
+            </div>
+            <div style="float:right;">
+                <ui:include src="cart.xhtml"/>
+                <ui:include src="login.xhtml"/>
+            </div>
+            <!--h1 align="center">#{text}</h1-->
         </ui:composition>
     </h:body>
 </html>

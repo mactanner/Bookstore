@@ -8,8 +8,11 @@
     </h:head> 
     <h:body>
         <ui:composition>
-            <h:outputText value="#{translations.cart}" /> 
-            <i class="icon-shopping-cart" />
+            <h:form>
+                <h:commandLink class="btn">
+                    <i class="icon-shopping-cart" /> #{translations.cart}
+                </h:commandLink>
+            </h:form>
         </ui:composition>
     </h:body>
 </html>

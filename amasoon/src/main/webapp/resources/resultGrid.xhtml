@@ -27,7 +27,9 @@ and open the template in the editor.
                         <f:facet name="header">
                             <h:outputText value="#{translations.price}"/>
                         </f:facet>
-                        <h:outputText value="#{book.price}"/>
+                        <h:outputText value="#{book.price}">
+                            <f:convertNumber type="currency" currencySymbol="Fr." locale="de_CH" />
+                        </h:outputText>
                     </h:column>
                     <h:column>
                         <h:commandLink>
