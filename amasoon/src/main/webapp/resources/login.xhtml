@@ -6,12 +6,11 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Login</title>
-        <f:view locale="#{userLocale.locale}"/>
     </h:head> 
     <h:body>
         <ui:composition>
             <h:form>
-                <h:commandLink class="btn" action="loginPage">
+                <h:commandLink class="btn" action="loginPage" >
                     <i class="icon-user"/> #{translations.login} 
                 </h:commandLink>
             </h:form>
