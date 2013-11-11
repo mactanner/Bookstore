@@ -28,16 +28,16 @@ and open the template in the editor.
                             <h:outputText value="#{translations.price}"/>
                         </f:facet>
                         <h:outputText value="#{book.price}">
-                            <f:convertNumber type="currency" currencySymbol="Fr." locale="de_CH" />
+                            <f:convertNumber type="currency" currencySymbol="CHF" locale="de_CH" />
                         </h:outputText>
                     </h:column>
                     <h:column>
-                        <h:commandLink>
-                            <i class="icon-shopping-cart" />&#xa0;
-                            <h:outputText value="#{translations.addToCart}" />
+                        <h:commandLink class="btn btn-info">
+                            <i class="icon-shopping-cart icon-white" /> #{translations.addToCart}
                         </h:commandLink>
                     </h:column>
                 </h:dataTable>
+                <h:messages globalOnly="true" layout="table" infoClass="info" errorClass="error"/>
             </h:form>
         </ui:composition>
     </h:body>

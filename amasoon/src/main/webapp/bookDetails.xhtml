@@ -40,6 +40,10 @@
                         <h:outputText value="#{catalogBean.selectedBook.price}">
                             <f:convertNumber type="currency" currencySymbol="Fr." locale="de_CH" />
                         </h:outputText>
+                        <h:outputText/>
+                        <h:commandLink class="btn btn-info">
+                            <i class="icon-shopping-cart icon-white" /> #{translations.addToCart}
+                        </h:commandLink>
                     </h:panelGrid>
                     <br/>
                     <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>
