@@ -32,7 +32,7 @@ and open the template in the editor.
                         </h:outputText>
                     </h:column>
                     <h:column>
-                        <h:commandLink>
+                        <h:commandLink action="#{orderBean.placeOrder(book)}">
                             <i class="icon-shopping-cart" />&#xa0;
                             <h:outputText value="#{translations.addToCart}" />
                         </h:commandLink>
