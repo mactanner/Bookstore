@@ -30,6 +30,7 @@ public class OrderService {
     private CatalogService catalogService = CatalogService.getInstance();
     private Map<Integer, Order> orders = new TreeMap<>();
     private int lastOrderNumber = 1000;
+    private List<Book> books = new ArrayList();
 
     public static OrderService getInstance() {
         if (instance == null) {
@@ -38,6 +39,14 @@ public class OrderService {
         return instance;
     }
 
+    public synchronized void addBook(Book book){
+        books.add(book);
+    }
+    
+    public int getTotalBooksAdded(){
+        return books.size();
+    }
+    
     public synchronized Integer placeOrder(String email, Map<String, Integer> items)
             throws CustomerNotFoundException, CreditCardExpiredException, BookNotFoundException {
         logger.log(Level.INFO, "Placing order for customer with email {0}", email);

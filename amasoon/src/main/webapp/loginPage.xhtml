@@ -22,8 +22,10 @@
                         <h:inputSecret id="password" required="true" requiredMessage="#{translations.loginPagePassword}"/>
                         <h:message for="password" errorClass="errorMessage"/>
                     </h:panelGrid>
-                    <h:commandButton class="btn btn-primary" value="#{translations.login}" type="submit"/>&#xa0;
+                    <h:commandButton class="btn btn-primary" value="#{translations.login}" action="orderSummaryPage" type="submit"/>&#xa0;
                     <br/><br/><br/>
+                    <h:outputText value="Ich möchte ein Konto eröffnen "/>  
+                    <h:commandLink value="Registrierung" action="registrationPage" immediate="true"/><br/>
                     <h:outputText value="#{translations.loginPageForgotPassword}"/>  
                     <h:commandLink  value="#{translations.loginPageLinkToForgotPassword}" immediate="true"/><br/>
                     <h:outputText value="#{translations.loginPageChangePassword}"/>  

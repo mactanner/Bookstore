@@ -9,9 +9,11 @@
     <h:body>
         <ui:composition>
             <h:form>
-                <h:commandLink class="btn" value="#{translations.cart}">
-                    <i class="icon-shopping-cart" /> 
+                <h:commandLink class="btn" action="shoppingCart">
+                    <i class="icon-shopping-cart" /> #{translations.cart} ( #{orderBean.getTotalBooksAdded()} )
                 </h:commandLink>
+                
+                TODO SB count fett und orange
             </h:form>
         </ui:composition>
     </h:body>
