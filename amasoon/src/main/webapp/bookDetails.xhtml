@@ -15,7 +15,7 @@
 
             <ui:define name="content">
                 <ui:include src="./resources/pageTitle.xhtml" >
-                    <ui:param name="title" value="#{translations.catalogDetailTitle}" />
+                    <ui:param name="title" value="#{catalogBean.selectedBook.title}" />
                 </ui:include>
 
                 <h:form id="main">
