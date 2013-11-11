@@ -10,10 +10,10 @@
     <h:body>
         <ui:composition>
             <h:form styleClass="bottom_right">
-                TODO MK
-                <h:commandLink class="btn" value="#{userLocale.locale}" disabled="true" style="background: white"/>
-                <h:commandLink class="btn" action="#{userLocale.switchToGerman()}" value="DE" />
-                <h:commandLink class="btn" action="#{userLocale.switchToEnglish()}" value="EN" />
+                <h:commandLink value="DE" rendered="#{userLocale.localeIsEnglish()}" action="#{userLocale.switchToGerman()}" class="btn"/>
+                <h:commandLink value="EN" rendered="#{userLocale.localeIsEnglish()}" class="btn btn-inverse" disabled="true" />
+                <h:commandLink value="DE" rendered="#{userLocale.localeIsGerman()}" class="btn btn-inverse" disabled="true" />
+                <h:commandLink value="EN" rendered="#{userLocale.localeIsGerman()}" action="#{userLocale.switchToEnglish()}" class="btn" />
             </h:form>
         </ui:composition>
     </h:body>

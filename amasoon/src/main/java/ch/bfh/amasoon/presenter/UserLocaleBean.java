@@ -15,6 +15,7 @@ import javax.inject.Named;
 @Named("userLocale")
 @SessionScoped
 public class UserLocaleBean implements Serializable {
+
     private static final FacesContext context = FacesContext.getCurrentInstance();
     private static final ExternalContext extContext = context.getExternalContext();
     private Locale locale;
@@ -33,6 +34,14 @@ public class UserLocaleBean implements Serializable {
 
     public void switchToGerman() {
         locale = Locale.GERMAN;
+    }
+
+    public boolean localeIsEnglish() {
+        return "EN".equals(getLocale());
+    }
+
+    public boolean localeIsGerman() {
+        return "DE".equals(getLocale());
     }
 
 }
