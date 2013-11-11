@@ -2,12 +2,10 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
         <title>Login Page</title>
-        <f:view locale="#{userLocale.locale}"/>
     </h:head>
 
     <h:body>
@@ -15,21 +13,22 @@
             <ui:define name="content">
                 <h:form>
                     <h:panelGrid columns="3">
-                        <h:outputText value="Username:"/>
-                        <h:inputText id="username" required="true" requiredMessage="#{translations.loginPageEmail}"/>
-                        <h:message for="username" errorClass="errorMessage"/>
-                        <h:outputText value="Password:"/>
-                        <h:inputSecret id="password" required="true" requiredMessage="#{translations.loginPagePassword}"/>
+                        <h:outputText value="#{translations.email}"/>
+                        <h:inputText id="email" value="#{userAuthentificationBean.email}" required="true" requiredMessage="#{translations.loginPageEmail}"/>
+                        <h:message for="email" errorClass="errorMessage"/>
+                        <h:outputText value="#{translations.password}"/>
+                        <h:inputSecret id="password" value="#{userAuthentificationBean.password}" required="true" requiredMessage="#{translations.loginPagePassword}"/>
                         <h:message for="password" errorClass="errorMessage"/>
                     </h:panelGrid>
-                    <h:commandButton class="btn btn-primary" value="#{translations.login}" action="orderSummaryPage" type="submit"/>&#xa0;
+                    <h:commandButton class="btn btn-primary" value="#{translations.login}" action="#{userAuthentificationBean.login}" type="submit"/>&#xa0;
                     <br/><br/><br/>
-                    <h:outputText value="Ich möchte ein Konto eröffnen "/>  
-                    <h:commandLink value="Registrierung" action="registrationPage" immediate="true"/><br/>
+                    <h:outputText value="#{translations.loginPageCreateAccount}"/>  
+                    <h:commandLink value="#{translations.loginPageLinkToCreateAccount}" action="registrationPage" immediate="true"/><br/>
                     <h:outputText value="#{translations.loginPageForgotPassword}"/>  
                     <h:commandLink  value="#{translations.loginPageLinkToForgotPassword}" immediate="true"/><br/>
                     <h:outputText value="#{translations.loginPageChangePassword}"/>  
                     <h:commandLink  value="#{translations.loginPageLinkToChangePassword}" immediate="true"/><br/>
+                    <br/>
                 </h:form>
             </ui:define>
         </ui:composition>
