@@ -10,10 +10,8 @@
         <ui:composition>
             <h:form>
                 <h:commandLink class="btn" action="shoppingCart">
-                    <i class="icon-shopping-cart" /> #{translations.cart} ( #{orderBean.getTotalBooksAdded()} )
+                    <i class="icon-shopping-cart" /> #{translations.cart} <font color="#FFA500"><b>(#{orderBean.getTotalBooksAdded()})</b></font>
                 </h:commandLink>
-                
-                TODO SB count fett und orange
             </h:form>
         </ui:composition>
     </h:body>
