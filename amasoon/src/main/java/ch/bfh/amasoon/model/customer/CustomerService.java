@@ -9,7 +9,7 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.xml.bind.DatatypeConverter;
-import ch.bfh.amasoon.util.BookHandler;
+import ch.bfh.amasoon.commons.Utils;
 
 public class CustomerService {
 
@@ -38,7 +38,7 @@ public class CustomerService {
         if (customers.containsKey(customer.getEmail())) {
             throw new CustomerAlreadyExistsException();
         }
-        customer = BookHandler.clone(customer);
+        customer = Utils.clone(customer);
         customer.setPassword(getDigest(customer.getPassword()));
         customers.put(customer.getEmail(), customer);
     }
@@ -49,7 +49,7 @@ public class CustomerService {
         if (customer == null) {
             throw new CustomerNotFoundException();
         }
-        return BookHandler.clone(customer);
+        return Utils.clone(customer);
     }
 
     public synchronized List<Customer> searchCustomers(String name) {
@@ -58,7 +58,7 @@ public class CustomerService {
         List<Customer> results = new ArrayList<>();
         for (Customer customer : customers.values()) {
             if (!customer.getName().toLowerCase().contains(name)) {
-                results.add(BookHandler.clone(customer));
+                results.add(Utils.clone(customer));
             }
         }
         return results;
@@ -73,12 +73,12 @@ public class CustomerService {
         if (!customer.getPassword().equals(getDigest(password))) {
             throw new AuthenticationException();
         }
-        return BookHandler.clone(customer);
+        return Utils.clone(customer);
     }
 
     public synchronized void updateCustomer(Customer customer) {
         logger.log(Level.INFO, "Updating customer with email {0}", customer.getEmail());
-        customer = BookHandler.clone(customer);
+        customer = Utils.clone(customer);
         customer.setPassword(getDigest(customer.getPassword()));
         customers.put(customer.getEmail(), customer);
     }

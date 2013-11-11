@@ -8,7 +8,7 @@ package ch.bfh.amasoon.presenter;
 import com.google.common.base.Strings;
 import ch.bfh.amasoon.model.catalog.Book;
 import ch.bfh.amasoon.model.catalog.CatalogService;
-import ch.bfh.amasoon.util.MessageFactory;
+import ch.bfh.amasoon.commons.MessageFactory;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;

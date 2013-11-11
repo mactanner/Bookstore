@@ -1,4 +1,4 @@
-package ch.bfh.amasoon.util;
+package ch.bfh.amasoon.commons;
 
 import java.text.MessageFormat;
 import java.util.Locale;

@@ -10,7 +10,7 @@ import java.util.logging.Logger;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
-import ch.bfh.amasoon.util.BookHandler;
+import ch.bfh.amasoon.commons.Utils;
 
 public class CatalogService {
 
@@ -45,7 +45,7 @@ public class CatalogService {
         if (books.containsKey(book.getIsbn())) {
             throw new BookAlreadyExistsException();
         }
-        books.put(book.getIsbn(), BookHandler.clone(book));
+        books.put(book.getIsbn(), Utils.clone(book));
     }
 
     public synchronized Book findBook(String isbn) throws BookNotFoundException {
@@ -54,7 +54,7 @@ public class CatalogService {
         if (book == null) {
             throw new BookNotFoundException();
         }
-        return BookHandler.clone(book);
+        return Utils.clone(book);
     }
 
     public synchronized List<Book> searchBooks(String... keywords) {
@@ -72,14 +72,14 @@ public class CatalogService {
                     continue loop;
                 }
             }
-            results.add(BookHandler.clone(book));
+            results.add(Utils.clone(book));
         }
         return results;
     }
 
     public synchronized void updateBook(Book book) {
         logger.log(Level.INFO, "Updating book with isbn {0}", book.getIsbn());
-        books.put(book.getIsbn(), BookHandler.clone(book));
+        books.put(book.getIsbn(), Utils.clone(book));
     }
 
     public synchronized void removeBook(String isbn) {

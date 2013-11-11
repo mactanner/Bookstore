@@ -1,4 +1,4 @@
-package ch.bfh.amasoon.util;
+package ch.bfh.amasoon.commons;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -9,7 +9,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import ch.bfh.amasoon.model.catalog.CatalogService;
 
-public class BookHandler {
+public class Utils {
 
     private static final Logger logger = Logger.getLogger(CatalogService.class.getName());
 

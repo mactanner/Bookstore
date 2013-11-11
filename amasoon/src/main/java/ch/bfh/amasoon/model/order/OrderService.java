@@ -15,7 +15,7 @@ import java.util.logging.Logger;
 import ch.bfh.amasoon.model.catalog.Book;
 import ch.bfh.amasoon.model.catalog.BookNotFoundException;
 import ch.bfh.amasoon.model.catalog.CatalogService;
-import ch.bfh.amasoon.util.BookHandler;
+import ch.bfh.amasoon.commons.Utils;
 import ch.bfh.amasoon.model.customer.CreditCard;
 import ch.bfh.amasoon.model.customer.Customer;
 import ch.bfh.amasoon.model.customer.CustomerNotFoundException;
@@ -44,8 +44,8 @@ public class OrderService {
         Order order = new Order();
         Customer customer = customerService.findCustomer(email);
         order.setCustomer(customer);
-        order.setAddress(BookHandler.clone(customer.getAddress()));
-        CreditCard creditCard = BookHandler.clone(customer.getCreditCard());
+        order.setAddress(Utils.clone(customer.getAddress()));
+        CreditCard creditCard = Utils.clone(customer.getCreditCard());
         for (int i = 0; i < 12; i++) {
             creditCard.setNumber(creditCard.getNumber().replaceFirst("[0-9]", "*"));
         }
@@ -83,7 +83,7 @@ public class OrderService {
         if (order == null) {
             throw new OrderNotFoundException();
         }
-        return BookHandler.clone(order);
+        return Utils.clone(order);
     }
 
     public synchronized List<Order> searchOrders(Date dateFrom, Date dateTo) throws InvalidTimePeriodException {
@@ -99,7 +99,7 @@ public class OrderService {
         for (Order order : orders.values()) {
             String orderDate = df.format(order.getDate());
             if (orderDate.compareTo(beginDate) >= 0 && orderDate.compareTo(endDate) <= 0) {
-                results.add(BookHandler.clone(order));
+                results.add(Utils.clone(order));
             }
         }
         return results;
