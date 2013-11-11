@@ -15,7 +15,7 @@ public class Order implements Serializable {
 
         open, closed, canceled
     }
-    private Integer number;
+    private String number;
     private Date date;
     private BigDecimal amount;
     private Status status;
@@ -24,11 +24,11 @@ public class Order implements Serializable {
     private CreditCard creditCard;
     private List<LineItem> items;
 
-    public Integer getNumber() {
+    public String getNumber() {
         return number;
     }
 
-    public void setNumber(Integer number) {
+    public void setNumber(String number) {
         this.number = number;
     }
 

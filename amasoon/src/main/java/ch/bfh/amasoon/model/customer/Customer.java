@@ -39,6 +39,9 @@ public class Customer implements Serializable {
     }
 
     public Address getAddress() {
+        if (address == null) {
+            address = new Address();
+        }
         return address;
     }
 
@@ -47,6 +50,9 @@ public class Customer implements Serializable {
     }
 
     public CreditCard getCreditCard() {
+        if (creditCard == null) {
+            creditCard = new CreditCard();
+        }
         return creditCard;
     }
 

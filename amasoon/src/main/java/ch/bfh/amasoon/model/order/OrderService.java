@@ -1,5 +1,10 @@
 package ch.bfh.amasoon.model.order;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -13,24 +18,17 @@ import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import ch.bfh.amasoon.model.catalog.Book;
-import ch.bfh.amasoon.model.catalog.BookNotFoundException;
 import ch.bfh.amasoon.model.catalog.CatalogService;
-import ch.bfh.amasoon.commons.Utils;
 import ch.bfh.amasoon.model.customer.CreditCard;
 import ch.bfh.amasoon.model.customer.Customer;
-import ch.bfh.amasoon.model.customer.CustomerNotFoundException;
-import ch.bfh.amasoon.model.customer.CustomerService;
 
 public class OrderService {
 
     private static final long ORDER_PROCESS_TIME = 600000;
     private static final Logger logger = Logger.getLogger(CatalogService.class.getName());
     private static OrderService instance;
-    private CustomerService customerService = CustomerService.getInstance();
-    private CatalogService catalogService = CatalogService.getInstance();
-    private Map<Integer, Order> orders = new TreeMap<>();
-    private int lastOrderNumber = 1000;
-    private List<Book> books = new ArrayList();
+    private Map<String, Order> orders = new TreeMap<>();
+    private List<Book> books = new ArrayList<>();
 
     public static OrderService getInstance() {
         if (instance == null) {
@@ -39,22 +37,20 @@ public class OrderService {
         return instance;
     }
 
-    public synchronized void addBook(Book book){
+    public synchronized void addBook(Book book) {
         books.add(book);
     }
-    
-    public int getTotalBooksAdded(){
+
+    public int getTotalBooksAdded() {
         return books.size();
     }
-    
-    public synchronized Integer placeOrder(String email, Map<String, Integer> items)
-            throws CustomerNotFoundException, CreditCardExpiredException, BookNotFoundException {
-        logger.log(Level.INFO, "Placing order for customer with email {0}", email);
+
+    public synchronized String placeOrder(Customer customer, List<LineItem> items) throws CreditCardExpiredException {
+        logger.log(Level.INFO, "Placing order for customer with email {0}", customer.getEmail());
         Order order = new Order();
-        Customer customer = customerService.findCustomer(email);
         order.setCustomer(customer);
-        order.setAddress(Utils.clone(customer.getAddress()));
-        CreditCard creditCard = Utils.clone(customer.getCreditCard());
+        order.setAddress(clone(customer.getAddress()));
+        CreditCard creditCard = clone(customer.getCreditCard());
         for (int i = 0; i < 12; i++) {
             creditCard.setNumber(creditCard.getNumber().replaceFirst("[0-9]", "*"));
         }
@@ -68,14 +64,12 @@ public class OrderService {
         }
 
         BigDecimal amount = BigDecimal.ZERO;
-        for (Map.Entry<String, Integer> entry : items.entrySet()) {
-            Book book = catalogService.findBook(entry.getKey());
-            BigDecimal quantity = BigDecimal.valueOf(entry.getValue());
-            amount = amount.add(book.getPrice().multiply(quantity));
-            order.getItems().add(new LineItem(book, entry.getValue()));
+        for (LineItem item : items) {
+            BigDecimal quantity = BigDecimal.valueOf(item.getQuantity());
+            amount = amount.add(item.getBook().getPrice().multiply(quantity));
         }
 
-        order.setNumber(++lastOrderNumber);
+        order.setNumber(String.valueOf(Math.random()).substring(2, 7));
         order.setDate(new Date());
         order.setAmount(amount);
         order.setStatus(Order.Status.open);
@@ -86,21 +80,21 @@ public class OrderService {
         return order.getNumber();
     }
 
-    public synchronized Order findOrder(Integer number) throws OrderNotFoundException {
+    public synchronized Order findOrder(String number) throws OrderNotFoundException {
         logger.log(Level.INFO, "Finding order with number {0}", number);
         Order order = orders.get(number);
         if (order == null) {
             throw new OrderNotFoundException();
         }
-        return Utils.clone(order);
+        return order;
     }
 
     public synchronized List<Order> searchOrders(Date dateFrom, Date dateTo) throws InvalidTimePeriodException {
+        logger.log(Level.INFO, "Searching orders between {0} and {1}", new Object[]{dateFrom, dateTo});
         SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd");
         df.setTimeZone(TimeZone.getTimeZone("UTC"));
         String beginDate = df.format(dateFrom);
         String endDate = df.format(dateTo);
-        logger.log(Level.INFO, "Searching orders between {0} and {1}", new Object[]{beginDate, endDate});
         if (beginDate.compareTo(endDate) > 0) {
             throw new InvalidTimePeriodException();
         }
@@ -108,14 +102,14 @@ public class OrderService {
         for (Order order : orders.values()) {
             String orderDate = df.format(order.getDate());
             if (orderDate.compareTo(beginDate) >= 0 && orderDate.compareTo(endDate) <= 0) {
-                results.add(Utils.clone(order));
+                results.add(order);
             }
         }
         return results;
     }
 
     public synchronized void cancelOrder(Integer number) throws OrderNotFoundException, OrderNotCancelableException {
-        logger.info("Canceling order with number " + number);
+        logger.log(Level.INFO, "Canceling order with number {0}", number);
         Order order = orders.get(number);
         if (order.getStatus() != Order.Status.open) {
             throw new OrderNotCancelableException();
@@ -124,6 +118,7 @@ public class OrderService {
     }
 
     private void processOrder(final Order order) {
+        logger.log(Level.INFO, "Processing order with number {0}", order.getNumber());
         TimerTask task = new TimerTask() {
             @Override
             public void run() {
@@ -133,5 +128,18 @@ public class OrderService {
             }
         };
         new Timer().schedule(task, ORDER_PROCESS_TIME);
+    }
+
+    @SuppressWarnings("unchecked")
+    private <T> T clone(T object) {
+        try {
+            ByteArrayOutputStream os = new ByteArrayOutputStream();
+            new ObjectOutputStream(os).writeObject(object);
+            ByteArrayInputStream is = new ByteArrayInputStream(os.toByteArray());
+            return (T) new ObjectInputStream(is).readObject();
+        } catch (IOException | ClassNotFoundException ex) {
+            logger.log(Level.SEVERE, null, ex);
+            return null;
+        }
     }
 }

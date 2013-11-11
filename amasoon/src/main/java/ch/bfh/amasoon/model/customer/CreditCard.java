@@ -7,7 +7,7 @@ public class CreditCard implements Serializable {
 
     public enum Type {
 
-        AmericanExpress, MasterCard, Visa
+        MasterCard, Visa
     }
     private Type type;
     private String number;
