@@ -42,7 +42,7 @@
     position: relative;
     padding: 5px;
     margin: 10px 10px 10px 10px;
-    height: 700px;
+    min-height: 400px;
 }
 
 .bottom_content {
@@ -61,6 +61,7 @@
     margin: 10px 10px 10px 10px;
 }
 
-
-
+.search_form {
+    text-align: center;
+}
 

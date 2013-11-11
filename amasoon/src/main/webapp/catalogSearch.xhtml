@@ -14,9 +14,6 @@
         <ui:composition template="./resources/userTemplate.xhtml">
 
             <ui:define name="content">
-                <ui:include src="./resources/pageTitle.xhtml" >
-                    <ui:param name="title" value="#{translations.catalogTitle}" />
-                </ui:include>
                 <ui:include src="./resources/search.xhtml" />
                 <br/>
                 <ui:include src="./resources/resultGrid.xhtml" />
