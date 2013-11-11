@@ -5,20 +5,27 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
     <h:head>
         <title>Header</title>
-        <h:outputStylesheet name="./css/default.css"/>
     </h:head> 
     <h:body>
         <ui:composition>
-            <h:panelGrid columns="3" columnClasses="header_column1, header_column2, header_column3"  style="width: 100%">
-                <h:graphicImage name="img/amasoon.png"/>
-                <h1>#{text}</h1>
-                <h:panelGroup>
-                    <h:panelGrid columns="2">
-                        <ui:include src="cart.xhtml"/>
-                        <ui:include src="login.xhtml"/>
-                    </h:panelGrid>
-                </h:panelGroup>
-            </h:panelGrid>
+            <div style="overflow: auto; clear: both;float: none;">
+                <div style="float:left">
+                    <h:form>
+                        <h:commandLink action="catalogSearch">
+                            <h:graphicImage name="img/amasoon.png" />
+                        </h:commandLink>
+                    </h:form>
+                </div>
+                <div style="float:right">
+                    <h:panelGroup>
+                        <h:panelGrid columns="3">
+                            <ui:include src="cart.xhtml"/>
+                            <ui:include src="login.xhtml"/>
+                            <ui:include src="locale.xhtml"/>
+                        </h:panelGrid>
+                    </h:panelGroup>
+                </div>
+            </div>
         </ui:composition>
     </h:body>
 </html>

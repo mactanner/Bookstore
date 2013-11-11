@@ -6,25 +6,10 @@
     <h:head>
         <title>Footer</title>
     </h:head>
-    <h:body>
+    <h:body class="container">
         <ui:composition>
-
-
-
-
-            <h:panelGrid columns="3" columnClasses="footer_column1, footer_column2, footer_column3"  style="width: 100%" >
-                <h:panelGroup class="bottom_left">
-                    <h:panelGrid columns="2">
-                        <ui:include src="copyright.xhtml"/>
-                        <ui:include src="disclaimer.xhtml"/>
-                    </h:panelGrid>
-                </h:panelGroup>
-                <p/>
-                <ui:include src="locale.xhtml" class="bottom_right"/>
-            </h:panelGrid>
-
-
-
+            <ui:include src="copyright.xhtml"/>
+            <ui:include src="disclaimer.xhtml"/>
         </ui:composition>
     </h:body>
 </html>
