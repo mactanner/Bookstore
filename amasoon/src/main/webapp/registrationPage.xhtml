@@ -18,21 +18,26 @@
                 </ui:include>
 
                 <h:form id="main">
-                    <br/> TODO SB: in work
+                    <br/> 
+                    <!--TODO SB: in work-->
                     <h:panelGrid class="table table" columns="2">
-                        <h:outputText value="#{translations.registrationPageEmail}"/>
-                        <!-- TODO SB waiting for jaxb-fix
-                        <h:inputText value="#{customerBean.customer.email}"/>
-                        -->
-                        <h:outputText value="#{translations.registrationPagePassword}"/>
-                        <!--
-                        <h:inputText value="#{customerBean.customer.password}"/>
-                        -->
-                        <h:outputText value="#{translations.registrationPageName}"/>
-                       <!--
+                        <h:outputText value="#{translations.customerName}"/>
                         <h:inputText value="#{customerBean.customer.name}"/>
-                        -->
-                    <h:commandButton class="btn" action="customerDetailPage" value="#{translations.registrationPageSave}"/>
+                        <h:outputText value="#{translations.customerEmail}"/>
+                        <h:inputText value="#{customerBean.customer.email}"/>
+                        <h:outputText value="#{translations.customerPassword}"/>
+                        <h:inputText value="#{customerBean.customer.password}"/>
+                        <h:outputText value="#{translations.customerCreditcard}"/>
+                        <h:inputText value="#{customerBean.customer.creditCard}"/>
+                        <h:outputText value="#{translations.customerStreet}"/>
+                        <h:inputText value="#{customerBean.customer.address.street}"/>
+                        <h:outputText value="#{translations.customerZipCode}"/>
+                        <h:inputText value="#{customerBean.customer.address.zipCode}"/>
+                        <h:outputText value="#{translations.customerCity}"/>
+                        <h:inputText value="#{customerBean.customer.address.city}"/>
+                        <h:outputText value="#{translations.customerCountry}"/>
+                        <h:inputText value="#{customerBean.customer.address.country}"/>
+                        <h:commandButton class="btn" action="customerDetailPage" value="#{translations.registrationPageSave}"/>
                     </h:panelGrid>
                     <br/>
                     <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>

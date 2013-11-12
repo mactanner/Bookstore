@@ -13,14 +13,14 @@ import javax.inject.Named;
 @SessionScoped
 public class CustomerBean implements Serializable {
 
-  //  private CustomerService customerService = CustomerService.getInstance(); TODO SB
+    private CustomerService customerService = CustomerService.getInstance();
     private Customer customer;
 
     public Customer getCustomer() {
-        if (customer==null){
+        if (customer == null) {
             customer = new Customer();
         }
-                
+
         return customer;
     }
 
@@ -29,10 +29,10 @@ public class CustomerBean implements Serializable {
     }
 
     public void addCustomer() {
-//        try {
-//            customerService.addCustomer(customer);
-//        } catch (CustomerAlreadyExistsException ex) {
-//            Logger.getLogger(CustomerBean.class.getName()).log(Level.SEVERE, null, ex);
-//        }
+        try {
+            customerService.addCustomer(customer);
+        } catch (CustomerAlreadyExistsException ex) {
+            Logger.getLogger(CustomerBean.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 }
