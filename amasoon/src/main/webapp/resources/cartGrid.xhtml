@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Result List</title>
+    </h:head> 
+    <h:body>
+        <ui:composition>
+            <h:form>
+                <h:dataTable class="table table-striped" id="data" value="#{orderBean.books}" var="book" rendered="#{not empty orderBean.books}">
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{translations.title}"/>
+                        </f:facet>
+                        <h:outputText value="#{book.title}"/>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{translations.price}"/>
+                        </f:facet>
+                        <h:outputText value="#{book.price}">
+                            <f:convertNumber type="currency" currencySymbol="CHF" locale="de_CH" />
+                        </h:outputText>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{translations.cartGridQuantity}"/>
+                        </f:facet>
+                        <h:outputText value="#{orderBean.getQuantity(book)}" />
+                    </h:column>
+                    <h:column>
+                        <h:commandLink class="btn btn-info btn-small" action="#{orderBean.removeFromCart(book)}" value="#{translations.cartGridRemove}" />
+                    </h:column>
+                </h:dataTable>
+                <h:messages globalOnly="true" layout="table" infoClass="info" errorClass="error"/>
+            </h:form>
+        </ui:composition>
+    </h:body>
+
+</html>

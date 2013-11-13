@@ -16,7 +16,7 @@ and open the template in the editor.
         <ui:composition>
             <h:form id="search" class="search_form">
                 <h:inputText styleClass="input-xxlarge" style="margin-top: 9px" id="keywords" value="#{catalogBean.keywords}"/>
-                <h:commandButton class="btn btn-primary" action="#{catalogBean.searchBooks}" value="#{translations.catalogSearch}" type="submit"/>&#xa0;
+                <h:commandButton class="btn btn-primary" action="#{catalogBean.searchBooks}" value="#{translations.search}" type="submit"/>&#xa0;
                 <h:message for="keywords" styleClass="error"/>&#xa0;
             </h:form>
         </ui:composition>

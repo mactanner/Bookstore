@@ -13,12 +13,13 @@
         <ui:composition template="./resources/userTemplate.xhtml">
             <ui:define name="content">
                 <h:form>
-
-                    TODO MT (shopping card): impl grid
-                    
-                    
-                    <h:commandButton class="btn btn-primary" value="bestellen" action="loginPage" type="submit" rendered="true"/>&#xa0;
-                    <!--TODO SB: rendered= UserBean.isLoggedIn-->
+                    <ui:include src="./resources/cartGrid.xhtml" />
+                    <div style="float: left">
+                        <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>
+                    </div>
+                    <div style="float: right">
+                        <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" action="loginPage" type="submit" rendered="true"/>&#xa0;
+                    </div>
                 </h:form>
             </ui:define>
         </ui:composition>
