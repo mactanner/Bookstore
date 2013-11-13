@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<customers>
+	<customer>
+		<name>Alice Smith</name>
+		<email>alice@example.org</email>
+		<password>alice</password>
+		<address>
+			<street>123 Maple Street</street>
+			<city>Mill Valley</city>
+			<zipCode>90952</zipCode>
+			<country>US</country>
+		</address>
+		<creditCard>
+			<type>MasterCard</type>
+			<number>5400 0000 0000 0005</number>
+			<expirationDate>2015-01-01Z</expirationDate>
+		</creditCard>
+	</customer>
+</customers>

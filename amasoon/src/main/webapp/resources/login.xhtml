@@ -10,8 +10,12 @@
     <h:body>
         <ui:composition>
             <h:form>
-                <h:commandLink class="btn" action="loginPage" >
+                <!--TODO SB JSTL machen mit if-then-else logik für button label-->
+                <h:commandLink class="btn" action="loginPage" rendered="#{userAuthentificationBean.loggedOut}">
                     <i class="icon-user"/> #{translations.login} 
+                </h:commandLink>
+                <h:commandLink class="btn" action="#{userAuthentificationBean.logout()}" rendered="#{userAuthentificationBean.loggedIn}">
+                    <i class="icon-user"/> #{translations.logout} 
                 </h:commandLink>
             </h:form>
         </ui:composition>

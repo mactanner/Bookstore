@@ -7,16 +7,44 @@
 
     <h:head>
         <title>Registration Page</title>
-        <f:view locale="#{userLocale.locale}"/>
     </h:head>
 
     <h:body>
         <ui:composition template="./resources/userTemplate.xhtml">
+
             <ui:define name="content">
-                <h:form>
-                    TODO SB user form
+                <ui:include src="./resources/pageTitle.xhtml" >
+                    <ui:param name="title" value="#{translations.registrationPageTitle}" />
+                </ui:include>
+
+                <h:form id="main">
+                    <br/> 
+                    <!--TODO SB: in work-->
+                    <h:panelGrid class="table table" columns="2">
+                        <h:outputText value="#{translations.customerName}"/>
+                        <h:inputText value="#{customerBean.customer.name}"/>
+                        <h:outputText value="#{translations.customerEmail}"/>
+                        <h:inputText value="#{customerBean.customer.email}"/>
+                        <h:outputText value="#{translations.customerPassword}"/>
+                        <h:inputText value="#{customerBean.customer.password}"/>
+                        <h:outputText value="#{translations.customerCreditcard}"/>
+                        <h:inputText value="#{customerBean.customer.creditCard}"/>
+                        <h:outputText value="#{translations.customerStreet}"/>
+                        <h:inputText value="#{customerBean.customer.address.street}"/>
+                        <h:outputText value="#{translations.customerZipCode}"/>
+                        <h:inputText value="#{customerBean.customer.address.zipCode}"/>
+                        <h:outputText value="#{translations.customerCity}"/>
+                        <h:inputText value="#{customerBean.customer.address.city}"/>
+                        <h:outputText value="#{translations.customerCountry}"/>
+                        <h:inputText value="#{customerBean.customer.address.country}"/>
+                        <h:commandButton class="btn" action="customerDetailPage" value="#{translations.registrationPageSave}"/>
+                    </h:panelGrid>
+                    <br/>
+                    <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>
                 </h:form>
+
             </ui:define>
+
         </ui:composition>
     </h:body>
 </html>

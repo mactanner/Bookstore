@@ -6,21 +6,17 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
-        <title>Registration Page</title>
+        <title>To many retries</title>
     </h:head>
 
     <h:body>
         <ui:composition template="./resources/userTemplate.xhtml">
-            <ui:define name="content">
-                <h:form>
 
-                    TODO MT (shopping card): impl grid
-                    
-                    
-                    <h:commandButton class="btn btn-primary" value="bestellen" action="loginPage" type="submit" rendered="true"/>&#xa0;
-                    <!--TODO SB: rendered= UserBean.isLoggedIn-->
-                </h:form>
+            <ui:define name="content">
+                <h:outputText value="Ihr Konto wurde vorübergehend gesperrt"/>
             </ui:define>
+
         </ui:composition>
+
     </h:body>
 </html>
