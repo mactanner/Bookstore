@@ -7,13 +7,14 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.event.ValueChangeEvent;
 import javax.inject.Named;
 
 @Named
 @SessionScoped
 public class OrderBean implements Serializable {
 
-    private ConcurrentHashMap<Book, Integer> books = new ConcurrentHashMap<Book, Integer>();
+    private ConcurrentHashMap<Book, Integer> books = new ConcurrentHashMap<>();
 
     public void addToCart(Book book) {
         Integer count = books.get(book);
@@ -32,8 +33,20 @@ public class OrderBean implements Serializable {
         return Collections.list(books.keys());
     }
 
-    public int getQuantity(Book book) {
-        return books.get(book);
+    public Integer getQuantity(Book book) {
+        if (books.containsKey(book)) {
+            return books.get(book);
+        } else {
+            return 0;
+        }
+    }
+
+    public void setQuantity(Book book) {
+
+    }
+
+    public void valueChanged(ValueChangeEvent e) {
+        System.out.println();
     }
 
     public int getTotalBooksAdded() {

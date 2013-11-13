@@ -8,7 +8,8 @@ and open the template in the editor.
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ext="http://amasoon.ch/jsf/taglib">
 
     <h:head>
         <title>Result List</title>
@@ -36,12 +37,13 @@ and open the template in the editor.
                         <f:facet name="header">
                             <h:outputText value="#{translations.cartGridQuantity}"/>
                         </f:facet>
-                        <h:outputText value="#{orderBean.getQuantity(book)}" />
+                        <ext:selectNumber id="quantity" min="1" max="50" value="#{orderBean.getQuantity(book)}" />
                     </h:column>
                     <h:column>
-                        <h:commandLink class="btn btn-info btn-small" action="#{orderBean.removeFromCart(book)}" value="#{translations.cartGridRemove}" />
+                        <h:commandLink class="btn btn-info btn-small" action="#{orderBean.removeFromCart(book)}" value="#{translations.cartGridRemove}" immediate="true" />
                     </h:column>
                 </h:dataTable>
+                <h:outputText value="#{translations.cartGridEmptyCart}" rendered="#{empty orderBean.books}" />
                 <h:messages globalOnly="true" layout="table" infoClass="info" errorClass="error"/>
             </h:form>
         </ui:composition>

@@ -15,7 +15,7 @@
                 <ui:include src="./resources/cartGrid.xhtml" />
                 <h:form id="shoppingCartForm">
                     <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>&#xa0;
-                    <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" action="loginPage" type="submit" rendered="true"/>
+                    <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" action="loginPage" type="submit" rendered="#{not empty orderBean.books}"/>
                 </h:form>
             </ui:define>
         </ui:composition>
