@@ -19,7 +19,6 @@
 
                 <h:form id="main">
                     <br/> 
-                    <!--TODO SB: in work-->
                     <h:panelGrid class="table table" columns="2">
                         <h:outputText value="#{translations.customerName}"/>
                         <h:inputText value="#{customerBean.customer.name}"/>
@@ -27,8 +26,9 @@
                         <h:inputText value="#{customerBean.customer.email}"/>
                         <h:outputText value="#{translations.customerPassword}"/>
                         <h:inputText value="#{customerBean.customer.password}"/>
-                        <h:outputText value="#{translations.customerCreditcard}"/>
-                        <h:inputText value="#{customerBean.customer.creditCard}"/>
+
+                        <ui:include src="creditCard.xhtml"/>
+
                         <h:outputText value="#{translations.addressStreet}"/>
                         <h:inputText value="#{customerBean.customer.address.street}"/>
                         <h:outputText value="#{translations.addressZipCode}"/>
@@ -37,9 +37,9 @@
                         <h:inputText value="#{customerBean.customer.address.city}"/>
                         <h:outputText value="#{translations.addressCountry}"/>
                         <h:inputText value="#{customerBean.customer.address.country}"/>
-                        <h:commandButton class="btn" action="customerDetailPage" value="#{translations.save}"/>
                     </h:panelGrid>
                     <br/>
+                    <h:commandButton class="btn" action="customerDetailPage" value="#{translations.save}"/>
                     <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>
                 </h:form>
 

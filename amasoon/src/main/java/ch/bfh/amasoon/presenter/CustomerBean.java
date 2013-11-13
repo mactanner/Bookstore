@@ -1,5 +1,6 @@
 package ch.bfh.amasoon.presenter;
 
+import ch.bfh.amasoon.model.customer.CreditCard;
 import ch.bfh.amasoon.model.customer.Customer;
 import ch.bfh.amasoon.model.customer.CustomerAlreadyExistsException;
 import ch.bfh.amasoon.model.customer.CustomerService;
@@ -15,6 +16,10 @@ public class CustomerBean implements Serializable {
 
     private CustomerService customerService = CustomerService.getInstance();
     private Customer customer;
+
+    public CreditCard.Type[] getCardTypes() {
+        return CreditCard.Type.values();
+    }
 
     public Customer getCustomer() {
         if (customer == null) {
