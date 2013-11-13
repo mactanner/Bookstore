@@ -17,18 +17,19 @@ import java.util.TimerTask;
 import java.util.TreeMap;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import ch.bfh.amasoon.model.catalog.Book;
 import ch.bfh.amasoon.model.catalog.CatalogService;
 import ch.bfh.amasoon.model.customer.CreditCard;
 import ch.bfh.amasoon.model.customer.Customer;
+import ch.bfh.amasoon.model.customer.CustomerNotFoundException;
+import ch.bfh.amasoon.model.customer.CustomerService;
 
 public class OrderService {
 
     private static final long ORDER_PROCESS_TIME = 600000;
     private static final Logger logger = Logger.getLogger(CatalogService.class.getName());
     private static OrderService instance;
+    private CustomerService customerService = CustomerService.getInstance();
     private Map<String, Order> orders = new TreeMap<>();
-    private List<Book> books = new ArrayList<>();
 
     public static OrderService getInstance() {
         if (instance == null) {
@@ -37,17 +38,16 @@ public class OrderService {
         return instance;
     }
 
-    public synchronized void addBook(Book book) {
-        books.add(book);
-    }
+    public synchronized String placeOrder(String email, List<LineItem> items) throws CustomerNotFoundException, CreditCardExpiredException {
+        logger.log(Level.INFO, "Placing order for customer with email {0}", email);
+        Customer customer = customerService.findCustomer(email);
+        checkCreditCard(customer.getCreditCard());
 
-    public int getTotalBooksAdded() {
-        return books.size();
-    }
-
-    public synchronized String placeOrder(Customer customer, List<LineItem> items) throws CreditCardExpiredException {
-        logger.log(Level.INFO, "Placing order for customer with email {0}", customer.getEmail());
         Order order = new Order();
+        order.setNumber(String.valueOf(Math.random()).substring(2, 7));
+        order.setDate(new Date());
+        order.setStatus(Order.Status.open);
+
         order.setCustomer(customer);
         order.setAddress(clone(customer.getAddress()));
         CreditCard creditCard = clone(customer.getCreditCard());
@@ -56,23 +56,13 @@ public class OrderService {
         }
         order.setCreditCard(creditCard);
 
-        Date expDate = order.getCreditCard().getExpirationDate();
-        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM");
-        df.setTimeZone(TimeZone.getTimeZone("UTC"));
-        if (df.format(expDate).compareTo(df.format(new Date())) < 0) {
-            throw new CreditCardExpiredException();
-        }
-
+        order.setItems(clone(items));
         BigDecimal amount = BigDecimal.ZERO;
         for (LineItem item : items) {
             BigDecimal quantity = BigDecimal.valueOf(item.getQuantity());
             amount = amount.add(item.getBook().getPrice().multiply(quantity));
         }
-
-        order.setNumber(String.valueOf(Math.random()).substring(2, 7));
-        order.setDate(new Date());
         order.setAmount(amount);
-        order.setStatus(Order.Status.open);
 
         orders.put(order.getNumber(), order);
         customer.getOrders().add(order);
@@ -108,13 +98,21 @@ public class OrderService {
         return results;
     }
 
-    public synchronized void cancelOrder(Integer number) throws OrderNotFoundException, OrderNotCancelableException {
+    public synchronized void cancelOrder(String number) throws OrderNotFoundException, OrderNotCancelableException {
         logger.log(Level.INFO, "Canceling order with number {0}", number);
-        Order order = orders.get(number);
+        Order order = findOrder(number);
         if (order.getStatus() != Order.Status.open) {
             throw new OrderNotCancelableException();
         }
         order.setStatus(Order.Status.canceled);
+    }
+
+    private void checkCreditCard(CreditCard creditCard) throws CreditCardExpiredException {
+        SimpleDateFormat df = new SimpleDateFormat("yyyy-MM");
+        df.setTimeZone(TimeZone.getTimeZone("UTC"));
+        if (df.format(creditCard.getExpirationDate()).compareTo(df.format(new Date())) < 0) {
+            throw new CreditCardExpiredException();
+        }
     }
 
     private void processOrder(final Order order) {

@@ -1,8 +1,9 @@
 package ch.bfh.amasoon.presenter;
 
 import ch.bfh.amasoon.model.catalog.Book;
-import ch.bfh.amasoon.model.order.OrderService;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
@@ -10,14 +11,13 @@ import javax.inject.Named;
 @SessionScoped
 public class OrderBean implements Serializable {
 
-    private OrderService orderService = OrderService.getInstance();
-
+    private List<Book> books = new ArrayList<>();
 
     public void addToCart(Book book) {
-        orderService.addBook(book);
+        books.add(book);
     }
-    
-    public int getTotalBooksAdded(){
-        return orderService.getTotalBooksAdded();
+
+    public int getTotalBooksAdded() {
+        return books.size();
     }
 }
