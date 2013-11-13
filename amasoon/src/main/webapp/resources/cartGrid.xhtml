@@ -24,14 +24,22 @@ and open the template in the editor.
                             <h:outputText value="#{translations.title}"/>
                         </f:facet>
                         <h:outputText value="#{book.title}"/>
+                        <f:facet name="footer">
+                            <h:outputText value="#{translations.cartGridTotal}"  style="font-weight:bold"/>
+                        </f:facet>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="#{translations.price}"/>
                         </f:facet>
-                        <h:outputText value="#{book.price}">
+                        <h:outputText value="#{orderBean.getCartItemPrice(book)}">
                             <f:convertNumber type="currency" currencySymbol="CHF" locale="de_CH" />
                         </h:outputText>
+                        <f:facet name="footer">
+                            <h:outputText value="#{orderBean.totalPrice}" style="font-weight:bold">
+                                <f:convertNumber type="currency" currencySymbol="CHF" locale="de_CH" />
+                            </h:outputText>
+                        </f:facet>
                     </h:column>
                     <h:column>
                         <f:facet name="header">
@@ -42,6 +50,7 @@ and open the template in the editor.
                     <h:column>
                         <h:commandLink class="btn btn-info btn-small" action="#{orderBean.removeFromCart(book)}" value="#{translations.cartGridRemove}" immediate="true" />
                     </h:column>
+
                 </h:dataTable>
                 <h:outputText value="#{translations.cartGridEmptyCart}" rendered="#{empty orderBean.books}" />
                 <h:messages globalOnly="true" layout="table" infoClass="info" errorClass="error"/>

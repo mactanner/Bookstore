@@ -2,8 +2,10 @@ package ch.bfh.amasoon.presenter;
 
 import ch.bfh.amasoon.model.catalog.Book;
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Collections;
 import java.util.Enumeration;
+import java.util.Iterator;
 import java.util.List;
 import java.util.concurrent.ConcurrentHashMap;
 import javax.enterprise.context.SessionScoped;
@@ -47,6 +49,21 @@ public class OrderBean implements Serializable {
 
     public void valueChanged(ValueChangeEvent e) {
         System.out.println();
+    }
+
+    public BigDecimal getTotalPrice() {
+        BigDecimal totalPrice = new BigDecimal(0.0);
+        Iterator<Book> booksIterator = books.keySet().iterator();
+        while (booksIterator.hasNext()) {
+            Book book = booksIterator.next();
+            totalPrice = totalPrice.add(getCartItemPrice(book));
+        }
+        return totalPrice;
+    }
+
+    public BigDecimal getCartItemPrice(Book book) {
+        BigDecimal totalPrice = book.getPrice();
+        return totalPrice.multiply(new BigDecimal(books.get(book)));
     }
 
     public int getTotalBooksAdded() {
