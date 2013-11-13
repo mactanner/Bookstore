@@ -2,8 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>Customer Grid</title>
@@ -13,13 +13,18 @@
     <h:body>
         <ui:composition>
             <h5>#{title}</h5>
-            <h:panelGrid class="table table" columns="2">
+            <h:panelGrid class="table table" columns="3">
                 <h:outputText value="#{translations.customerName}"/>
-                <h:inputText value="#{customerBean.customer.name}"/>
+                <h:inputText id="name" value="#{customerBean.customer.name}" required="true"/>
+                <h:message for="name" errorClass="error"/>
                 <h:outputText value="#{translations.customerEmail}"/>
-                <h:inputText value="#{customerBean.customer.email}"/>
+                <h:inputText id="email" value="#{customerBean.customer.email}" required="true" >
+                    <f:validateRegex pattern="[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}"/>
+                </h:inputText>
+                <h:message for="email" errorClass="error"/>
                 <h:outputText value="#{translations.customerPassword}"/>
-                <h:inputSecret value="#{customerBean.customer.password}"/>
+                <h:inputSecret id="password" value="#{customerBean.customer.password}"/>
+                <h:message for="password" errorClass="error"/>
             </h:panelGrid>
         </ui:composition>
     </h:body>

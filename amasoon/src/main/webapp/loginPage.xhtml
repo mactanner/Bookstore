@@ -15,10 +15,10 @@
                     <h:panelGrid columns="3">
                         <h:outputText value="#{translations.loginPageEmail}"/>
                         <h:inputText id="email" value="#{userAuthentificationBean.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}"/>
-                        <h:message for="email" errorClass="errorMessage"/>
+                        <h:message for="email" errorClass="error"/>
                         <h:outputText value="#{translations.loginPagePassword}"/>
                         <h:inputSecret id="password" value="#{userAuthentificationBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}"/>
-                        <h:message for="password" errorClass="errorMessage"/>
+                        <h:message for="password" errorClass="error"/>
                     </h:panelGrid>
                     <h:commandButton class="btn btn-primary" value="#{translations.login}" action="#{userAuthentificationBean.login}" type="submit"/>&#xa0;
                     <br/><br/><br/>
