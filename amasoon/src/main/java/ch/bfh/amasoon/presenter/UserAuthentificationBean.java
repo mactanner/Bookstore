@@ -16,9 +16,14 @@ public class UserAuthentificationBean implements Serializable {
 
     private CustomerService customerService = CustomerService.getInstance();
     private Customer customer;
+
     private int retry = 0;
     private String email;
     private String password;
+
+    public Customer getCustomer() {
+        return customer;
+    }
 
     public String getEmail() {
         return email;
@@ -57,14 +62,6 @@ public class UserAuthentificationBean implements Serializable {
         customer = null;
         retry = 0;
         return "catalogSearch";
-    }
-
-    public synchronized boolean isLoggedIn() {
-        return null != customer;
-    }
-
-    public synchronized boolean isLoggedOut() {
-        return !isLoggedIn();
     }
 
 }

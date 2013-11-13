@@ -9,10 +9,10 @@
     <h:body>
         <ui:composition>
             <h:form>
-                <h:commandLink class="btn" action="loginPage" rendered="#{userAuthentificationBean.loggedOut}">
+                <h:commandLink class="btn" action="loginPage" rendered="#{empty userAuthentificationBean.customer}">
                     <i class="icon-user"/> #{translations.login} 
                 </h:commandLink>
-                <h:commandLink class="btn" action="#{userAuthentificationBean.logout()}" rendered="#{userAuthentificationBean.loggedIn}">
+                <h:commandLink class="btn" action="#{userAuthentificationBean.logout()}" rendered="#{not empty userAuthentificationBean.customer}">
                     <i class="icon-user"/> #{translations.logout} 
                 </h:commandLink>
             </h:form>
