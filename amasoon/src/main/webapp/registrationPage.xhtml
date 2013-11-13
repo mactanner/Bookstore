@@ -29,15 +29,15 @@
                         <h:inputText value="#{customerBean.customer.password}"/>
                         <h:outputText value="#{translations.customerCreditcard}"/>
                         <h:inputText value="#{customerBean.customer.creditCard}"/>
-                        <h:outputText value="#{translations.customerStreet}"/>
+                        <h:outputText value="#{translations.addressStreet}"/>
                         <h:inputText value="#{customerBean.customer.address.street}"/>
-                        <h:outputText value="#{translations.customerZipCode}"/>
+                        <h:outputText value="#{translations.addressZipCode}"/>
                         <h:inputText value="#{customerBean.customer.address.zipCode}"/>
-                        <h:outputText value="#{translations.customerCity}"/>
+                        <h:outputText value="#{translations.addressCity}"/>
                         <h:inputText value="#{customerBean.customer.address.city}"/>
-                        <h:outputText value="#{translations.customerCountry}"/>
+                        <h:outputText value="#{translations.addressCountry}"/>
                         <h:inputText value="#{customerBean.customer.address.country}"/>
-                        <h:commandButton class="btn" action="customerDetailPage" value="#{translations.registrationPageSave}"/>
+                        <h:commandButton class="btn" action="customerDetailPage" value="#{translations.save}"/>
                     </h:panelGrid>
                     <br/>
                     <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>

@@ -13,11 +13,11 @@
             <ui:define name="content">
                 <h:form>
                     <h:panelGrid columns="3">
-                        <h:outputText value="#{translations.email}"/>
-                        <h:inputText id="email" value="#{userAuthentificationBean.email}" required="true" requiredMessage="#{translations.loginPageEmail}"/>
+                        <h:outputText value="#{translations.loginPageEmail}"/>
+                        <h:inputText id="email" value="#{userAuthentificationBean.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}"/>
                         <h:message for="email" errorClass="errorMessage"/>
-                        <h:outputText value="#{translations.password}"/>
-                        <h:inputSecret id="password" value="#{userAuthentificationBean.password}" required="true" requiredMessage="#{translations.loginPagePassword}"/>
+                        <h:outputText value="#{translations.loginPagePassword}"/>
+                        <h:inputSecret id="password" value="#{userAuthentificationBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}"/>
                         <h:message for="password" errorClass="errorMessage"/>
                     </h:panelGrid>
                     <h:commandButton class="btn btn-primary" value="#{translations.login}" action="#{userAuthentificationBean.login}" type="submit"/>&#xa0;
