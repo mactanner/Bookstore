@@ -45,6 +45,7 @@ public class ExpirationDateRenderer extends Renderer {
 		// render month selection
 		writer.startElement("select", dateInput);
 		writer.writeAttribute("name", dateInput.getClientId() + ":month", null);
+                writer.writeAttribute("class", "input-mini", null);
 		for (int month = 1; month <= 12; month++) {
 			writer.startElement("option", dateInput);
 			writer.writeAttribute("value", month, null);
@@ -59,6 +60,7 @@ public class ExpirationDateRenderer extends Renderer {
 		// render year selection
 		writer.startElement("select", dateInput);
 		writer.writeAttribute("name", dateInput.getClientId() + ":year", null);
+                writer.writeAttribute("class", "input-small", null);
 		for (int year = currentYear; year < currentYear + dateInput.getYears(); year++) {
 			writer.startElement("option", dateInput);
 			writer.writeAttribute("value", year, null);

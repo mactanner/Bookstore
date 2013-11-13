@@ -33,11 +33,18 @@ public class CustomerBean implements Serializable {
         this.customer = customer;
     }
 
-    public void addCustomer() {
+    /**
+     * TODO SB conditionale navigation auf customerDetailPage
+     * @return 
+     */
+    public String addCustomer() {
         try {
             customerService.addCustomer(customer);
+            return "orderSummaryPage";
         } catch (CustomerAlreadyExistsException ex) {
             Logger.getLogger(CustomerBean.class.getName()).log(Level.SEVERE, null, ex);
+            //TODO message
+            return null;
         }
     }
 }

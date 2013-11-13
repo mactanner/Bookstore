@@ -25,9 +25,7 @@
                         <h:outputText value="#{translations.customerEmail}"/>
                         <h:inputText value="#{customerBean.customer.email}"/>
                         <h:outputText value="#{translations.customerPassword}"/>
-                        <h:inputText value="#{customerBean.customer.password}"/>
-
-                        <ui:include src="creditCard.xhtml"/>
+                        <h:inputSecret value="#{customerBean.customer.password}"/>
 
                         <h:outputText value="#{translations.addressStreet}"/>
                         <h:inputText value="#{customerBean.customer.address.street}"/>
@@ -38,8 +36,11 @@
                         <h:outputText value="#{translations.addressCountry}"/>
                         <h:inputText value="#{customerBean.customer.address.country}"/>
                     </h:panelGrid>
+                    <!--
+                    <ui:include src="creditCard.xhtml"/>
+                    -->
                     <br/>
-                    <h:commandButton class="btn" action="customerDetailPage" value="#{translations.save}"/>
+                    <h:commandButton class="btn" action="#{customerBean.addCustomer()}" value="#{translations.save}"/>
                     <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>
                 </h:form>
 
