@@ -12,16 +12,13 @@
     <h:body>
         <ui:composition template="./resources/userTemplate.xhtml">
             <ui:define name="content">
-                <h:form>
-                    <ui:include src="./resources/cartGrid.xhtml" />
-                    <div style="float: left">
-                        <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>
-                    </div>
-                    <div style="float: right">
-                        <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" action="loginPage" type="submit" rendered="true"/>&#xa0;
-                    </div>
+                <ui:include src="./resources/cartGrid.xhtml" />
+                <h:form id="shoppingCartForm">
+                    <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>&#xa0;
+                    <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" action="loginPage" type="submit" rendered="true"/>
                 </h:form>
             </ui:define>
         </ui:composition>
     </h:body>
+
 </html>

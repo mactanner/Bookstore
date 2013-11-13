@@ -12,10 +12,11 @@ and open the template in the editor.
 
     <h:head>
         <title>Result List</title>
-    </h:head> 
+    </h:head>
+
     <h:body>
         <ui:composition>
-            <h:form>
+            <h:form id="cartGridForm">
                 <h:dataTable class="table table-striped" id="data" value="#{orderBean.books}" var="book" rendered="#{not empty orderBean.books}">
                     <h:column>
                         <f:facet name="header">
