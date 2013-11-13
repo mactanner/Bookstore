@@ -11,14 +11,12 @@
 
     <h:body>
         <ui:composition template="./resources/userTemplate.xhtml">
-
             <ui:define name="content">
                 <ui:include src="./resources/pageTitle.xhtml" >
                     <ui:param name="title" value="#{translations.registrationPageTitle}" />
                 </ui:include>
 
-                <h:form id="main">
-                    <br/> 
+                <h:form>
                     <h:panelGrid class="table table" columns="2">
                         <h:outputText value="#{translations.customerName}"/>
                         <h:inputText value="#{customerBean.customer.name}"/>
@@ -36,16 +34,11 @@
                         <h:outputText value="#{translations.addressCountry}"/>
                         <h:inputText value="#{customerBean.customer.address.country}"/>
                     </h:panelGrid>
-                    <!--
-                    <ui:include src="creditCard.xhtml"/>
-                    -->
-                    <br/>
                     <h:commandButton class="btn" action="#{customerBean.addCustomer()}" value="#{translations.save}"/>
                     <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>
                 </h:form>
 
             </ui:define>
-
         </ui:composition>
     </h:body>
 </html>
