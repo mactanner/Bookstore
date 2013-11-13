@@ -6,14 +6,27 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
-        <title>Registration Page</title>
+        <title>Customer Detail Page</title>
     </h:head>
 
     <h:body>
         <ui:composition template="./resources/userTemplate.xhtml">
             <ui:define name="content">
+                <ui:include src="./resources/pageTitle.xhtml" >
+                    <ui:param name="title" value="#{translations.customerDetailPageTitle}" />
+                </ui:include>
                 <h:form>
-                    TODO SB (customer Detail page)
+                    <ui:include src="customerGrid.xhtml">
+                        <ui:param name="title" value="#{translations.customerTitle}" />
+                    </ui:include>
+                    <ui:include src="addressGrid.xhtml">
+                        <ui:param name="title" value="#{translations.addressTitle}" />
+                    </ui:include>
+                    <ui:include src="creditCardGrid.xhtml">
+                        <ui:param name="title" value="#{translations.creditCardTitle}" />
+                    </ui:include>
+                    <h:commandButton class="btn" action="#{customerBean.addCustomer()}" value="#{translations.save}"/>
+                    <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>
                 </h:form>
             </ui:define>
         </ui:composition>
