@@ -28,7 +28,9 @@
                         <ui:param name="title" value="#{translations.creditCardTitle}" />
                         <ui:param name="readonly" value="true" />
                     </ui:include>
+                    <br/><br/>
                     <h:commandButton class="btn" action="shoppingCart" value="#{translations.back}" immediate="true"/>&#xa0;
+                    <h:commandButton class="btn" action="customerDetailPage" value="#{translations.edit}"/>&#xa0;
                     <h:commandButton class="btn btn-primary" action="#{orderBean.placeOrder()}" value="#{translations.submit}"/>
                 </h:form>
             </ui:define>
