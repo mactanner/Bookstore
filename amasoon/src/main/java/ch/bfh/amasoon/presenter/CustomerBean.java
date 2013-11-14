@@ -15,11 +15,10 @@ import javax.inject.Named;
 @SessionScoped
 public class CustomerBean implements Serializable {
 
-    private CustomerService customerService = CustomerService.getInstance();
-    private Customer customer;
-
     @Inject
     private UserAuthentificationBean userAuthentificationBean;
+    private CustomerService customerService = CustomerService.getInstance();
+    private Customer customer;
 
     public CreditCard.Type[] getCardTypes() {
         return CreditCard.Type.values();
@@ -47,7 +46,7 @@ public class CustomerBean implements Serializable {
     public String addCustomer() {
         try {
             customerService.addCustomer(customer);
-            return "orderSummaryPage";
+            return "orderSummary";
         } catch (CustomerAlreadyExistsException ex) {
             Logger.getLogger(CustomerBean.class.getName()).log(Level.SEVERE, null, ex);
             //TODO message

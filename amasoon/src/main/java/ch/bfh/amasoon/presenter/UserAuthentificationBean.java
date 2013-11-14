@@ -41,12 +41,17 @@ public class UserAuthentificationBean implements Serializable {
         this.password = password;
     }
 
-    public String login() {
+    public String login(boolean isCartEmpty) {
         try {
             if (retry < 3) {
                 customer = customerService.authenticateCustomer(email, password);
                 retry = 0;
-                return "orderSummaryPage";
+                if (isCartEmpty) {
+                    return "catalogSearch";
+                } else {
+                    return "orderSummary";
+
+                }
             } else {
                 return "toomanyretries";
             }

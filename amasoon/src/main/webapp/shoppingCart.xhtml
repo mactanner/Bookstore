@@ -2,7 +2,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
@@ -12,15 +11,17 @@
     <h:body>
         <ui:composition template="./resources/userTemplate.xhtml">
             <ui:define name="content">
-                <ui:include src="./resources/cartGrid.xhtml" />
+                <ui:include src="./resources/cartGrid.xhtml" >
+                    <ui:param name="readonly" value="false" />
+                </ui:include>
                 <h:form id="shoppingCartForm">
                     <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>&#xa0;
-                    
+
                     <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" 
                                      action="loginPage" 
                                      type="submit" rendered="#{not empty orderBean.books and empty userAuthentificationBean.customer}"/>
-                     <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" 
-                                     action="orderSummaryPage" 
+                    <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" 
+                                     action="orderSummary" 
                                      type="submit" rendered="#{not empty orderBean.books and not empty userAuthentificationBean.customer}"/>
                 </h:form>
             </ui:define>

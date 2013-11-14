@@ -6,14 +6,17 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
-        <title>Registration Page</title>
+        <title>#{translations.orderConfirmationTitle}</title>
     </h:head>
 
     <h:body>
         <ui:composition template="./resources/userTemplate.xhtml">
             <ui:define name="content">
                 <h:form>
-                    TODO MT (order confirmation page): ihre bestellung wurde aufgegeben
+                    <h4>#{translations.orderConfirmationThanks}</h4>
+                    #{translations.orderConfirmationOrderNumber}&#xa0;<strong>#{orderBean.orderNumber}</strong>
+                    <br/><br/><br/>
+                    <h:commandButton class="btn btn-primary" action="catalogSearch" value="#{translations.orderConfirmationHome}"/>
                 </h:form>
             </ui:define>
         </ui:composition>

@@ -2,7 +2,8 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
 
     <h:head>
         <title>Login Page</title>
@@ -20,10 +21,9 @@
                         <h:inputSecret id="password" value="#{userAuthentificationBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}"/>
                         <h:message for="password" errorClass="error"/>
                     </h:panelGrid>
+                    <c:set var="cartIsEmpty" value="#{empty orderBean.books}" />
                     <h:commandButton class="btn btn-primary" value="#{translations.login}" 
-                                     action="#{userAuthentificationBean.login}" type="submit" rendered="#{not empty orderBean.books}"/>&#xa0;
-                    <h:commandButton class="btn btn-primary" value="#{translations.login}" 
-                                     action="catalogSearch" type="submit" rendered="#{empty orderBean.books}"/>&#xa0;
+                                     action="#{userAuthentificationBean.login(cartIsEmpty)}" type="submit"/>
                     <br/><br/><br/>
                     <h:outputText value="#{translations.loginPageCreateAccount}"/>  
                     <h:commandLink value="#{translations.loginPageLinkToCreateAccount}" action="registrationPage" immediate="true"/><br/>

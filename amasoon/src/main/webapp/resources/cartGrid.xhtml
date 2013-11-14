@@ -45,9 +45,10 @@ and open the template in the editor.
                         <f:facet name="header">
                             <h:outputText value="#{translations.cartGridQuantity}"/>
                         </f:facet>
-                        <ext:selectNumber id="quantity" min="1" max="50" value="#{orderBean.getQuantity(book)}" />
+                        <ext:selectNumber id="quantity" min="1" max="50" value="#{orderBean.getQuantity(book)}" rendered="#{not readonly}" />
+                        <h:outputText value="#{orderBean.getQuantity(book)}" rendered="#{readonly}" />
                     </h:column>
-                    <h:column>
+                    <h:column rendered="#{not readonly}">
                         <h:commandLink class="btn btn-info btn-small" action="#{orderBean.removeFromCart(book)}" value="#{translations.cartGridRemove}" immediate="true" />
                     </h:column>
 
