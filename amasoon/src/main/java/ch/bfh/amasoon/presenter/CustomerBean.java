@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 @Named
@@ -17,15 +18,20 @@ public class CustomerBean implements Serializable {
     private CustomerService customerService = CustomerService.getInstance();
     private Customer customer;
 
+    @Inject
+    private UserAuthentificationBean userAuthentificationBean;
+
     public CreditCard.Type[] getCardTypes() {
         return CreditCard.Type.values();
     }
 
     public Customer getCustomer() {
-        if (customer == null) {
+        if (userAuthentificationBean.isUserLoggedIn()) {
+            customer = userAuthentificationBean.getCustomer();
+        } else if (customer == null || customer != null && customer.getEmail() != null) {
+            // either new session user or user just logged out
             customer = new Customer();
         }
-
         return customer;
     }
 
@@ -35,7 +41,8 @@ public class CustomerBean implements Serializable {
 
     /**
      * TODO SB conditionale navigation auf customerDetailPage
-     * @return 
+     *
+     * @return
      */
     public String addCustomer() {
         try {

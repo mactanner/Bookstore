@@ -18,12 +18,15 @@
                 <h:form>
                     <ui:include src="customerGrid.xhtml">
                         <ui:param name="title" value="#{translations.customerTitle}" />
+                        <ui:param name="disabled" value="false" />
                     </ui:include>
                     <ui:include src="addressGrid.xhtml">
                         <ui:param name="title" value="#{translations.addressTitle}" />
+                        <ui:param name="disabled" value="false" />
                     </ui:include>
                     <ui:include src="creditCardGrid.xhtml">
                         <ui:param name="title" value="#{translations.creditCardTitle}" />
+                        <ui:param name="disabled" value="false" />
                     </ui:include>
                     <h:commandButton class="btn" action="#{customerBean.addCustomer()}" value="#{translations.save}"/>
                     <h:commandButton class="btn" action="catalogSearch" value="#{translations.back}"/>

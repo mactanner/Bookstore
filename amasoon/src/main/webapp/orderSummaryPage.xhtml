@@ -13,7 +13,18 @@
         <ui:composition template="./resources/userTemplate.xhtml">
             <ui:define name="content">
                 <h:form>
-                    TODO MT (order summary page): warenkorb total, rechungsadresse, zahlungsmittel
+                    <ui:include src="customerGrid.xhtml">
+                        <ui:param name="title" value="#{translations.customerTitle}" />
+                        <ui:param name="disabled" value="true" />
+                    </ui:include>
+                    <ui:include src="addressGrid.xhtml">
+                        <ui:param name="title" value="#{translations.addressTitle}" />
+                        <ui:param name="disabled" value="true" />
+                    </ui:include>
+                    <ui:include src="creditCardGrid.xhtml">
+                        <ui:param name="title" value="#{translations.creditCardTitle}" />
+                        <ui:param name="disabled" value="true" />
+                    </ui:include>
                 </h:form>
             </ui:define>
         </ui:composition>

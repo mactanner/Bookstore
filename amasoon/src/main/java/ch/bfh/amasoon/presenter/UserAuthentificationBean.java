@@ -64,4 +64,8 @@ public class UserAuthentificationBean implements Serializable {
         return "catalogSearch";
     }
 
+    public boolean isUserLoggedIn() {
+        return customer != null;
+    }
+
 }

@@ -15,15 +15,15 @@
             <h5>#{title}</h5>
             <h:panelGrid class="table table" columns="3">
                 <h:outputText value="#{translations.customerName}"/>
-                <h:inputText id="name" value="#{customerBean.customer.name}" required="true"/>
+                <h:inputText id="name" value="#{customerBean.customer.name}" required="true" disabled="#{disabled}"/>
                 <h:message for="name" errorClass="error"/>
                 <h:outputText value="#{translations.customerEmail}"/>
-                <h:inputText id="email" value="#{customerBean.customer.email}" required="true" >
+                <h:inputText id="email" value="#{customerBean.customer.email}" required="true" disabled="#{disabled}">
                     <f:validateRegex pattern="[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}"/>
                 </h:inputText>
                 <h:message for="email" errorClass="error"/>
-                <h:outputText value="#{translations.customerPassword}"/>
-                <h:inputSecret id="password" value="#{customerBean.customer.password}"/>
+                <h:outputText value="#{translations.customerPassword}" />
+                <h:inputSecret id="password" value="#{customerBean.customer.password}" disabled="#{disabled}"/>
                 <h:message for="password" errorClass="error"/>
             </h:panelGrid>
         </ui:composition>
