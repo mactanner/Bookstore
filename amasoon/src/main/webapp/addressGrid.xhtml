@@ -8,12 +8,13 @@
     <h:head>
         <title>Address Grid</title>
         <h:outputStylesheet name="./css/bootstrap.css"/>
+        <h:outputStylesheet name="./css/layout.css"/>
     </h:head>
 
     <h:body>
         <ui:composition>
             <h5>#{title}</h5>
-            <h:panelGrid class="table table" columns="3">
+            <h:panelGrid class="table table-condensed-fixwidth" columns="3">
                 <h:outputText value="#{translations.addressStreet}"/>
                 <h:inputText id="street" value="#{customerBean.customer.address.street}" disabled="#{readonly}" />
                 <h:message for="street" errorClass="error"/>

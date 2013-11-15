@@ -65,3 +65,7 @@
     text-align: center;
 }
 
+.table-condensed-fixwidth td {
+    padding: 4px 5px;
+    width: 100px;
+}

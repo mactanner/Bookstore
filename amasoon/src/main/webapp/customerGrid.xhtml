@@ -8,12 +8,13 @@
     <h:head>
         <title>Customer Grid</title>
         <h:outputStylesheet name="./css/bootstrap.css"/>
+        <h:outputStylesheet name="./css/layout.css"/>
     </h:head>
 
     <h:body>
         <ui:composition>
             <h5>#{title}</h5>
-            <h:panelGrid class="table table" columns="3">
+            <h:panelGrid class="table table-condensed-fixwidth" columns="3">
                 <h:outputText value="#{translations.customerName}"/>
                 <h:inputText id="name" value="#{customerBean.customer.name}" required="true" disabled="#{readonly}"/>
                 <h:message for="name" errorClass="error"/>

@@ -9,12 +9,13 @@
     <h:head>
         <title>Creditcard</title>
         <h:outputStylesheet name="./css/bootstrap.css"/>
+        <h:outputStylesheet name="./css/layout.css"/>
     </h:head>
 
     <h:body>
         <ui:composition>
             <h5>#{title}</h5>
-            <h:panelGrid columns="3">
+            <h:panelGrid class="table table-condensed-fixwidth" columns="3">
                 <h:outputText value="#{translations.creditCardCardType}"/>
                 <h:selectOneMenu id="cardType" value="#{customerBean.customer.creditCard.type}" required="true" disabled="#{readonly}">
                     <f:selectItem itemValue="#{null}"/>
