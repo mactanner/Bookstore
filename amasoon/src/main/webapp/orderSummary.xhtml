@@ -6,15 +6,20 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
-        <title>Registration Page</title>
+        <title>#{translations.orderSummaryTitle}</title>
     </h:head>
 
     <h:body>
         <ui:composition template="./resources/userTemplate.xhtml">
             <ui:define name="content">
+                <ui:include src="./resources/pageTitle.xhtml" >
+                    <ui:param name="title" value="#{translations.orderSummaryTitle}" />
+                </ui:include>
+                <br/>
                 <ui:include src="./resources/cartGrid.xhtml">
                     <ui:param name="readonly" value="true" />
                 </ui:include>
+                <br/>
                 <h:form>
                     <ui:include src="customerGrid.xhtml">
                         <ui:param name="title" value="#{translations.customerTitle}" />
