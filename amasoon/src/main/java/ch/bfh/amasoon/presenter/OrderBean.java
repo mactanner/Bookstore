@@ -9,12 +9,8 @@ import ch.bfh.amasoon.model.order.OrderService;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.event.ValueChangeEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -24,87 +20,71 @@ public class OrderBean implements Serializable {
 
     @Inject
     private UserAuthentificationBean userAuthentificationBean;
-    private ConcurrentHashMap<Book, Integer> books = new ConcurrentHashMap<>();
-    private OrderService orderService = OrderService.getInstance();
+    private List<LineItem> lineItems = new ArrayList<>();
+    private final OrderService orderService = OrderService.getInstance();
     private String orderNumber = "";
 
     private static final String PLACE_ORDER_FAILED = "ch.bfh.amasoon.presenter.OrderBean.PLACE_ORDER_FAILED";
 
     public void addToCart(Book book) {
-        Integer count = books.get(book);
-        if (count == null) {
-            books.put(book, 1);
-        } else {
-            books.put(book, count + 1);
+        boolean isAdditionalBook = true;
+        for (LineItem lineItem : lineItems) {
+            if (book.getIsbn().equals(lineItem.getBook().getIsbn())) {
+                lineItem.setQuantity(lineItem.getQuantity() + 1);
+                isAdditionalBook = false;
+            }
+        }
+        if (isAdditionalBook) {
+            lineItems.add(new LineItem(book, 1));
         }
     }
 
-    public void removeFromCart(Book book) {
-        books.remove(book);
-    }
-
-    public List<Book> getBooks() {
-        return Collections.list(books.keys());
-    }
-
-    public Integer getQuantity(Book book) {
-        if (books.containsKey(book)) {
-            return books.get(book);
-        } else {
-            return 0;
+    public void removeFromCart(LineItem lineItemToRemove) {
+        for (LineItem lineItem : lineItems) {
+            if (lineItem.equals(lineItemToRemove)) {
+                lineItems.remove(lineItem);
+                break;
+            }
         }
     }
 
-    public void setQuantity(Book book) {
-
+    public List<LineItem> getLineItems() {
+        return lineItems;
     }
 
-    public void valueChanged(ValueChangeEvent e) {
-        System.out.println();
+    public BigDecimal getLineItemPrice(LineItem lineItem) {
+        return lineItem.getBook().getPrice().multiply(new BigDecimal(lineItem.getQuantity()));
     }
 
     public BigDecimal getTotalPrice() {
         BigDecimal totalPrice = new BigDecimal(0.0);
-        Iterator<Book> booksIterator = books.keySet().iterator();
-        while (booksIterator.hasNext()) {
-            Book book = booksIterator.next();
-            totalPrice = totalPrice.add(getCartItemPrice(book));
+        for (LineItem lineItem : lineItems) {
+            totalPrice = totalPrice.add(getLineItemPrice(lineItem));
         }
         return totalPrice;
     }
 
-    public BigDecimal getCartItemPrice(Book book) {
-        BigDecimal totalPrice = book.getPrice();
-        return totalPrice.multiply(new BigDecimal(books.get(book)));
+    public int getTotalBooksAdded() {
+        int numberOfBooks = 0;
+        for (LineItem lineItem : lineItems) {
+            numberOfBooks += lineItem.getQuantity();
+        }
+        return numberOfBooks;
     }
 
-    public int getTotalBooksAdded() {
-        int count = 0;
-        for (Integer amount : books.values()) {
-            count += amount;
-        }
-        return count;
+    public boolean isCartEmpty() {
+        return lineItems.isEmpty();
     }
 
     public String placeOrder() {
         try {
-            orderNumber = orderService.placeOrder(userAuthentificationBean.getEmail(), createLineItems());
-            books.clear();
+            orderNumber = orderService.placeOrder(userAuthentificationBean.getEmail(), lineItems);
+            lineItems.clear();
             return "orderConfirmation";
         } catch (CustomerNotFoundException | CreditCardExpiredException ex) {
             MessageFactory.error(PLACE_ORDER_FAILED);
         }
         return null;
-    }
-
-    private List<LineItem> createLineItems() {
-        List<LineItem> lineItems = new ArrayList();
-        Iterator<Book> booksIterator = books.keySet().iterator();
-        while (booksIterator.hasNext()) {
-            Book book = booksIterator.next();
-            lineItems.add(new LineItem(book, books.get(book)));
-        }
-        return lineItems;
     }
 
     public String getOrderNumber() {

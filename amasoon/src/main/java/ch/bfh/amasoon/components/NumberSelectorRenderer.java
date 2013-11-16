@@ -31,6 +31,7 @@ public class NumberSelectorRenderer extends Renderer {
         ResponseWriter writer = context.getResponseWriter();
         writer.startElement("select", selector);
         writer.writeAttribute("name", selector.getClientId(), null);
+        writer.writeAttribute("onchange", "submit()", null);
         writer.writeAttribute("class", "input-mini", null);
         writer.startElement("option", selector);
         writer.writeAttribute("value", "", null);

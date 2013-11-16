@@ -21,7 +21,7 @@
                         <h:inputSecret id="password" value="#{userAuthentificationBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}"/>
                         <h:message for="password" errorClass="error"/>
                     </h:panelGrid>
-                    <c:set var="cartIsEmpty" value="#{empty orderBean.books}" />
+                    <c:set var="cartIsEmpty" value="#{orderBean.cartEmpty}" />
                     <h:commandButton class="btn btn-primary" value="#{translations.login}" 
                                      action="#{userAuthentificationBean.login(cartIsEmpty)}" type="submit"/>
                     <br/><br/><br/>

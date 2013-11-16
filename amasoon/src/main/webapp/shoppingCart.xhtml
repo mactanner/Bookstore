@@ -5,7 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
-        <title>Registration Page</title>
+        <title>#{translations.shoppingCartTitle}</title>
     </h:head>
 
     <h:body>
@@ -19,10 +19,10 @@
 
                     <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" 
                                      action="loginPage" 
-                                     type="submit" rendered="#{not empty orderBean.books and empty userAuthentificationBean.customer}"/>
+                                     type="submit" rendered="#{not orderBean.cartEmpty and empty userAuthentificationBean.customer}"/>
                     <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" 
                                      action="orderSummary" 
-                                     type="submit" rendered="#{not empty orderBean.books and not empty userAuthentificationBean.customer}"/>
+                                     type="submit" rendered="#{not orderBean.cartEmpty and not empty userAuthentificationBean.customer}"/>
                 </h:form>
             </ui:define>
         </ui:composition>

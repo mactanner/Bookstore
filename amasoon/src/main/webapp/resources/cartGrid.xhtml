@@ -11,19 +11,17 @@ and open the template in the editor.
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ext="http://amasoon.ch/jsf/taglib">
 
-    <h:head>
-        <title>Result List</title>
-    </h:head>
+    <h:head />
 
     <h:body>
         <ui:composition>
             <h:form id="cartGridForm">
-                <h:dataTable class="table table-striped" id="data" value="#{orderBean.books}" var="book" rendered="#{not empty orderBean.books}">
+                <h:dataTable class="table table-striped" id="data" value="#{orderBean.lineItems}" var="lineItem" rendered="#{not orderBean.cartEmpty}">
                     <h:column>
                         <f:facet name="header">
                             <h:outputText value="#{translations.title}"/>
                         </f:facet>
-                        <h:outputText value="#{book.title}"/>
+                        <h:outputText value="#{lineItem.book.title}"/>
                         <f:facet name="footer">
                             <h:outputText value="#{translations.cartGridTotal}"  style="font-weight:bold"/>
                         </f:facet>
@@ -32,7 +30,7 @@ and open the template in the editor.
                         <f:facet name="header">
                             <h:outputText value="#{translations.price}"/>
                         </f:facet>
-                        <h:outputText value="#{orderBean.getCartItemPrice(book)}">
+                        <h:outputText value="#{orderBean.getLineItemPrice(lineItem)}">
                             <f:convertNumber type="currency" currencySymbol="CHF" locale="de_CH" />
                         </h:outputText>
                         <f:facet name="footer">
@@ -45,15 +43,15 @@ and open the template in the editor.
                         <f:facet name="header">
                             <h:outputText value="#{translations.cartGridQuantity}"/>
                         </f:facet>
-                        <ext:selectNumber id="quantity" min="1" max="50" value="#{orderBean.getQuantity(book)}" rendered="#{not readonly}" />
-                        <h:outputText value="#{orderBean.getQuantity(book)}" rendered="#{readonly}" />
+                        <ext:selectNumber id="quantity" min="1" max="50" value="#{lineItem.quantity}" rendered="#{not readonly}" />
+                        <h:outputText value="#{lineItem.quantity}" rendered="#{readonly}" />
                     </h:column>
                     <h:column rendered="#{not readonly}">
-                        <h:commandLink class="btn btn-info btn-small" action="#{orderBean.removeFromCart(book)}" value="#{translations.cartGridRemove}" immediate="true" />
+                        <h:commandLink class="btn btn-info btn-small" action="#{orderBean.removeFromCart(lineItem)}" value="#{translations.cartGridRemove}" immediate="true" />
                     </h:column>
 
                 </h:dataTable>
-                <h:outputText value="#{translations.cartGridEmptyCart}" rendered="#{empty orderBean.books}" />
+                <h:outputText value="#{translations.cartGridEmptyCart}" rendered="#{orderBean.cartEmpty}" />
             </h:form>
         </ui:composition>
     </h:body>
