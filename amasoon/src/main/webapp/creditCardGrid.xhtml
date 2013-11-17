@@ -16,23 +16,29 @@
         <ui:composition>
             <h5>#{title}</h5>
             <h:panelGrid class="table table-condensed-fixwidth" columns="3">
+
                 <h:outputText value="#{translations.creditCardCardType}"/>
-                <h:selectOneMenu id="cardType" value="#{customerBean.customer.creditCard.type}" required="true" disabled="#{readonly}">
+                <h:selectOneMenu id="cardType" value="#{customerBean.customer.creditCard.type}" required="true"
+                                 requiredMessage="#{translations.creditCardCardTypeRequired}" disabled="#{readonly}">
                     <f:selectItem itemValue="#{null}"/>
                     <f:selectItems value="#{customerBean.cardTypes}"/>
                 </h:selectOneMenu>
                 <h:message for="cardType" styleClass="error"/>
+
                 <h:outputText value="#{translations.creditCardCardNumber}"/>
-                <h:inputText id="cardNumber" value="#{customerBean.customer.creditCard.number}" required="true" size="20" disabled="#{readonly}">
+                <h:inputText id="cardNumber" value="#{customerBean.customer.creditCard.number}" required="true"
+                             requiredMessage="#{translations.creditCardCardNumberRequired}" size="20" disabled="#{readonly}">
                     <ext:validateCreditCard cardTypeId="cardType"/>
                 </h:inputText>
                 <h:message for="cardNumber" styleClass="error"/>
+
                 <h:outputText value="#{translations.creditCardExpirationDate}"/>
                 <ext:inputExpirationDate id="expirationDate" years="5" value="#{customerBean.customer.creditCard.expirationDate}" rendered="#{not readonly}"/>
                 <h:inputText value="#{customerBean.customer.creditCard.expirationDate}" rendered="#{readonly}" disabled="#{readonly}" >
                     <f:convertDateTime pattern="MM-yyyy" />
                 </h:inputText>
                 <h:message for="expirationDate" styleClass="error"/>
+
             </h:panelGrid>
         </ui:composition>
     </h:body>

@@ -3,35 +3,56 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>Login Page</title>
+        <f:view locale="#{userLocale.locale}"/>
     </h:head>
 
     <h:body>
         <ui:composition template="./resources/userTemplate.xhtml">
             <ui:define name="content">
-                <h:form>
-                    <h:panelGrid columns="3">
-                        <h:outputText value="#{translations.loginPageEmail}"/>
-                        <h:inputText id="email" value="#{userAuthentificationBean.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}"/>
-                        <h:message for="email" errorClass="error"/>
-                        <h:outputText value="#{translations.loginPagePassword}"/>
-                        <h:inputSecret id="password" value="#{userAuthentificationBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}"/>
-                        <h:message for="password" errorClass="error"/>
-                    </h:panelGrid>
+                <h:form styleClass="form-horizontal">
+
+                    <div class="control-group">
+                        <h:outputLabel value="#{translations.loginPageEmail}" styleClass="control-label"/>
+                        <div class="controls">
+                            <h:inputText id="email" value="#{userAuthentificationBean.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}"/>&#xa0;
+                            <h:message for="email" errorClass="error" styleClass="error"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+
+                        <h:outputLabel value="#{translations.loginPagePassword}" styleClass="control-label"/>
+                        <div class="controls">
+                            <h:inputSecret id="password" value="#{userAuthentificationBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}"/>&#xa0;
+                            <h:message for="password" errorClass="error" styleClass="error"/>
+                        </div>
+                    </div>
+
                     <c:set var="cartIsEmpty" value="#{orderBean.cartEmpty}" />
-                    <h:commandButton class="btn btn-primary" value="#{translations.login}" 
-                                     action="#{userAuthentificationBean.login(cartIsEmpty)}" type="submit"/>
-                    <br/><br/><br/>
-                    <h:outputText value="#{translations.loginPageCreateAccount}"/>  
-                    <h:commandLink value="#{translations.loginPageLinkToCreateAccount}" action="registrationPage" immediate="true"/><br/>
-                    <h:outputText value="#{translations.loginPageForgotPassword}"/>  
-                    <h:commandLink  value="#{translations.loginPageLinkToForgotPassword}" immediate="true"/><br/>
-                    <h:outputText value="#{translations.loginPageChangePassword}"/>  
-                    <h:commandLink  value="#{translations.loginPageLinkToChangePassword}" immediate="true"/><br/>
+                    <div class="control-group">
+                        <div class="controls">
+                            <h:commandButton class="btn btn-primary" value="#{translations.login}" 
+                                             action="#{userAuthentificationBean.login(cartIsEmpty)}" type="submit"/>
+                        </div>
+                    </div>
+
                     <br/>
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <h:outputText value="#{translations.loginPageCreateAccount}"/>&#xa0;
+                            <h:commandLink value="#{translations.loginPageLinkToCreateAccount}" action="registrationPage" immediate="true"/><br/>
+                            <h:outputText value="#{translations.loginPageForgotPassword}"/>&#xa0;
+                            <h:commandLink  value="#{translations.loginPageLinkToForgotPassword}" immediate="true"/><br/>
+                            <h:outputText value="#{translations.loginPageChangePassword}"/>&#xa0;
+                            <h:commandLink  value="#{translations.loginPageLinkToChangePassword}" immediate="true"/><br/>
+                        </div>
+                    </div>
                 </h:form>
             </ui:define>
         </ui:composition>

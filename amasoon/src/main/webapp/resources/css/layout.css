@@ -67,5 +67,11 @@
 
 .table-condensed-fixwidth td {
     padding: 4px 5px;
-    width: 100px;
+    width: 150px;
 }
+
+.error {
+    color: red;
+}
+
+

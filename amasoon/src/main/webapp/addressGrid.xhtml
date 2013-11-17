@@ -15,20 +15,29 @@
         <ui:composition>
             <h5>#{title}</h5>
             <h:panelGrid class="table table-condensed-fixwidth" columns="3">
+
                 <h:outputText value="#{translations.addressStreet}"/>
-                <h:inputText id="street" value="#{customerBean.customer.address.street}" disabled="#{readonly}" />
+                <h:inputText id="street" value="#{customerBean.customer.address.street}" required="true" 
+                             requiredMessage="#{translations.addressStreetRequired}" disabled="#{readonly}" />
                 <h:message for="street" errorClass="error"/>
+
                 <h:outputText value="#{translations.addressZipCode}"/>
-                <h:inputText id="zip" value="#{customerBean.customer.address.zipCode}" validatorMessage="#{javax.faces.validator.RegexValidator.NOT_MATCHED}" disabled="#{readonly}">
+                <h:inputText id="zip" value="#{customerBean.customer.address.zipCode}" validatorMessage="#{javax.faces.validator.RegexValidator.NOT_MATCHED}" required="true" 
+                             requiredMessage="#{translations.addressZipCodeRequired}" disabled="#{readonly}">
                     <f:validateRegex pattern="[1-9][0-9][0-9][0-9]"/>
                 </h:inputText>
                 <h:message for="zip" errorClass="error"/>
+
                 <h:outputText value="#{translations.addressCity}"/>
-                <h:inputText id="city" value="#{customerBean.customer.address.city}" disabled="#{readonly}"/>
+                <h:inputText id="city" value="#{customerBean.customer.address.city}" required="true" 
+                             requiredMessage="#{translations.addressCityRequired}" disabled="#{readonly}"/>
                 <h:message for="city" errorClass="error"/>
+
                 <h:outputText value="#{translations.addressCountry}"/>
-                <h:inputText id="country" value="#{customerBean.customer.address.country}" disabled="#{readonly}"/>
+                <h:inputText id="country" value="#{customerBean.customer.address.country}" required="true"
+                             requiredMessage="#{translations.addressCountryRequired}" disabled="#{readonly}"/>
                 <h:message for="country" errorClass="error"/>
+
             </h:panelGrid>
         </ui:composition>
     </h:body>
