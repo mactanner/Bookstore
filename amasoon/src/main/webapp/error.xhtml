@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>#{translations.errorSession}</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition template="./resources/userTemplate.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <h4>#{translations.errorSession}</h4>
+                    <br/><br/><br/>
+                    <h:commandButton class="btn btn-primary" action="catalogSearch" value="#{translations.home}"/>
+                </h:form>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+
+</html>
