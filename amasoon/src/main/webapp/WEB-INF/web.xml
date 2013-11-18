@@ -33,4 +33,22 @@
         <exception-type>javax.faces.application.ViewExpiredException</exception-type>
         <location>/error.xhtml</location>
     </error-page>
+
+    <security-role>
+        <role-name>employee</role-name>
+    </security-role>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>admin</web-resource-name>
+            <url-pattern>/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>employee</role-name>
+        </auth-constraint>
+    </security-constraint>
+    <login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>file</realm-name>
+    </login-config>
+
 </web-app>
