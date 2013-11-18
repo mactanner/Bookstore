@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>todo: customer search result</title>
+    </h:head>
+
+    <h:body>
+        <ui:composition>
+            <p>TODO: orders grid</p>
+            <ui:include src="../resources/pageTitle.xhtml">
+                <ui:param name="title" value="TODO: customer search result" />
+            </ui:include>
+            <h:form rendered="#{not empty customerAdminBean.customer}">
+                <ui:include src="../customerGrid.xhtml">
+                    <ui:param name="title" value="#{translations.customerTitle}" />
+                    <ui:param name="readonly" value="true" />
+                </ui:include>
+                <ui:include src="../addressGrid.xhtml">
+                    <ui:param name="title" value="#{translations.addressTitle}" />
+                    <ui:param name="readonly" value="true" />
+                </ui:include>
+                <ui:include src="../creditCardGrid.xhtml">
+                    <ui:param name="title" value="#{translations.creditCardTitle}" />
+                    <ui:param name="readonly" value="true" />
+                </ui:include>
+                <br/>
+            </h:form>
+        </ui:composition>
+    </h:body>
+</html>

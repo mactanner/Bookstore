@@ -34,6 +34,9 @@
 
                 <h:outputText value="#{translations.creditCardExpirationDate}"/>
                 <ext:expirationDate id="expirationDate" years="5" value="#{customerBean.customer.creditCard.expirationDate}" rendered="#{not readonly}"/>
+                <h:inputText value="#{customerBean.customer.creditCard.expirationDate}" rendered="#{readonly}" disabled="#{readonly}" >
+                    <f:convertDateTime pattern="MM-yyyy" />
+                </h:inputText>
                 <h:message for="expirationDate" styleClass="error"/>
 
             </h:panelGrid>

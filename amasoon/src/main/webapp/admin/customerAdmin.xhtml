@@ -8,11 +8,14 @@
         <title>Customer Admin</title>
     </h:head>
 
-
     <h:body>
-        <ui:composition>
+        <ui:composition template="../resources/adminTemplate.xhtml">
 
-            <p>Todo: Customer Search</p>
+            <ui:define name="content">
+                <ui:include src="./customerSearch.xhtml" />
+                <br/>
+                <ui:include src="./customerSearchResult.xhtml" />
+            </ui:define>
 
         </ui:composition>
 

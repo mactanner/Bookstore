@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <h:head>
+        <title>Customer Search</title>
+    </h:head> 
+    <h:body>
+        <ui:composition>
+            <h:form id="search" class="search_form">
+                <h:outputText value="#{translations.customerSearchEmail}" />&#xa0;
+                <h:inputText styleClass="input-xlarge" style="margin-top: 9px" id="emailToSearch" value="#{customerAdminBean.emailToSearch}"/>
+                <h:commandButton class="btn btn-primary" action="#{customerAdminBean.findCustomer}" value="#{translations.search}" type="submit"/>&#xa0;
+                <br/>
+                <h:message for="emailToSearch" styleClass="error"/>&#xa0;
+            </h:form>
+        </ui:composition>
+    </h:body>
+
+</html>
