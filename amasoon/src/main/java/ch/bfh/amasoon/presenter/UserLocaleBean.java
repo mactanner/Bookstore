@@ -28,7 +28,7 @@ public class UserLocaleBean implements Serializable {
     }
 
     private Locale fromHttpRequest() {
-        locale = Objects.firstNonNull(extContext.getRequestLocale(), Locale.GERMAN);
+        locale = Objects.firstNonNull(extContext.getRequestLocale(), context.getCurrentInstance().getViewRoot().getLocale());
         return locale;
     }
 

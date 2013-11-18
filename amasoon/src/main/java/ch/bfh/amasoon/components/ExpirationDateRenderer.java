@@ -1,4 +1,4 @@
-package ch.bfh.amasoon.presenter;
+package ch.bfh.amasoon.components;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -17,11 +17,11 @@ import javax.faces.render.Renderer;
 @FacesRenderer(componentFamily = UIInput.COMPONENT_FAMILY, rendererType = ExpirationDateRenderer.RENDERER_TYPE)
 public class ExpirationDateRenderer extends Renderer {
 
-	public static final String RENDERER_TYPE = "ch.amasoon.ExpirationDateRenderer";
+	public static final String RENDERER_TYPE = "ch.bfh.amasoon.components.ExpirationDateRenderer";
 
 	@Override
 	public void encodeBegin(FacesContext context, UIComponent component) throws IOException {
-		ExpirationDateInput dateInput = (ExpirationDateInput) component;
+		ExpirationDate dateInput = (ExpirationDate) component;
 		ResponseWriter writer = context.getResponseWriter();
 
 		// get selected date
@@ -75,7 +75,7 @@ public class ExpirationDateRenderer extends Renderer {
 
 	@Override
 	public void decode(FacesContext context, UIComponent component) {
-		ExpirationDateInput dateInput = (ExpirationDateInput) component;
+		ExpirationDate dateInput = (ExpirationDate) component;
 		Map<String, String> params = context.getExternalContext().getRequestParameterMap();
 		String year = params.get(dateInput.getClientId() + ":year");
 		String month = params.get(dateInput.getClientId() + ":month");

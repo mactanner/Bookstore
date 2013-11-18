@@ -9,14 +9,14 @@
     <tag>
         <tag-name>validateCreditCard</tag-name>
         <validator>
-            <validator-id>ch.amasoon.CreditCardValidator</validator-id>
+            <validator-id>ch.bfh.amasoon.components.CreditCardValidator</validator-id>
         </validator>
     </tag>
     <tag>
-        <tag-name>inputExpirationDate</tag-name>
+        <tag-name>expirationDate</tag-name>
         <component>
-            <component-type>ch.amasoon.ExpirationDateInput</component-type>
-            <renderer-type>ch.amasoon.ExpirationDateRenderer</renderer-type>
+            <component-type>ch.bfh.amasoon.components.ExpirationDate</component-type>
+            <renderer-type>ch.bfh.amasoon.components.ExpirationDateRenderer</renderer-type>
         </component>
     </tag>
     <tag>

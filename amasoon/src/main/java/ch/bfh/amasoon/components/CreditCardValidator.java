@@ -1,4 +1,4 @@
-package ch.bfh.amasoon.presenter;
+package ch.bfh.amasoon.components;
 
 import ch.bfh.amasoon.commons.MessageFactory;
 import ch.bfh.amasoon.model.customer.CreditCard;
@@ -15,11 +15,11 @@ import javax.faces.validator.ValidatorException;
 
 @FacesValidator(CreditCardValidator.VALIDATOR_ID)
 public class CreditCardValidator implements Validator, StateHolder {
-
-	public static final String VALIDATOR_ID = "ch.amasoon.CreditCardValidator";
-	public static final String INVALID_FORMAT_MESSAGE_ID = "ch.amasoon.CreditCardValidator.INVALID_FORMAT";
-	public static final String INVALID_CHECK_DIGIT_MESSAGE_ID = "ch.amasoon.CreditCardValidator.INVALID_CHECK_DIGIT";
-	public static final String INVALID_ISSUER_ID_MESSAGE_ID = "ch.amasoon.CreditCardValidator.INVALID_ISSUER_ID";
+	public static final String VALIDATOR_ID = "ch.bfh.amasoon.components.CreditCardValidator";
+        
+	public static final String INVALID_FORMAT_MESSAGE_ID = "ch.bfh.amasoon.components.CreditCardValidator.INVALID_FORMAT";
+	public static final String INVALID_CHECK_DIGIT_MESSAGE_ID = "ch.bfh.amasoon.components.CreditCardValidator.INVALID_CHECK_DIGIT";
+	public static final String INVALID_ISSUER_ID_MESSAGE_ID = "ch.bfh.amasoon.components.CreditCardValidator.INVALID_ISSUER_ID";
 	private static final Pattern PATTERN = Pattern.compile("([0-9]{4} ?){4}");
 	private static final String EXAMPLE = "1111 2222 3333 4444";
 

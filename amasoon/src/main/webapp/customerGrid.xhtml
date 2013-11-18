@@ -29,9 +29,9 @@
                 <h:message for="email" errorClass="error"/>
 
                 <h:outputText value="#{translations.customerPassword}" rendered="#{not readonly}" />
-                <h:inputSecret id="passwordx" value="#{customerBean.customer.password}" required="true" 
+                <h:inputSecret id="password" value="#{customerBean.customer.password}" required="true" 
                                requiredMessage="#{translations.customerPasswordRequired}" rendered="#{not readonly}"/>
-                <h:message for="passwordx" errorClass="error" rendered="#{not readonly}" />
+                <h:message for="password" errorClass="error" rendered="#{not readonly}" />
 
             </h:panelGrid>
         </ui:composition>

@@ -1,12 +1,12 @@
-package ch.bfh.amasoon.presenter;
+package ch.bfh.amasoon.components;
 
 import javax.faces.component.FacesComponent;
 import javax.faces.component.UIInput;
 
-@FacesComponent(ExpirationDateInput.COMPONENT_TYPE)
-public class ExpirationDateInput extends UIInput {
+@FacesComponent(ExpirationDate.COMPONENT_TYPE)
+public class ExpirationDate extends UIInput {
 
-	public static final String COMPONENT_TYPE = "ch.amasoon.ExpirationDateInput";
+	public static final String COMPONENT_TYPE = "ch.bfh.amasoon.components.ExpirationDate";
 
 	public enum PropertyKeys {
 
