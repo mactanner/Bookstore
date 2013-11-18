@@ -21,11 +21,15 @@ public class UserLocaleBean implements Serializable {
     private Locale locale;
 
     public String getLocale() {
-        return Objects.firstNonNull(locale, fromHttpRequest()).getLanguage().toUpperCase();
+        if (null == locale) {
+            locale = fromHttpRequest();
+        }
+        return locale.getLanguage().toUpperCase();
     }
 
     private Locale fromHttpRequest() {
-        return Objects.firstNonNull(extContext.getRequestLocale(), Locale.ENGLISH);
+        locale = Objects.firstNonNull(extContext.getRequestLocale(), Locale.GERMAN);
+        return locale;
     }
 
     public void switchToEnglish() {
