@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
@@ -19,17 +18,22 @@
                     <div class="control-group">
                         <h:outputLabel value="#{translations.loginPageEmail}" styleClass="control-label"/>
                         <div class="controls">
-                            <h:inputText id="email" value="#{userAuthentificationBean.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}"/>&#xa0;
+                            <h:inputText id="email" value="#{customerBean.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}"/>&#xa0;
                             <h:message for="email" errorClass="error" styleClass="error"/>
                         </div>
                     </div>
 
                     <div class="control-group">
-
                         <h:outputLabel value="#{translations.loginPagePassword}" styleClass="control-label"/>
                         <div class="controls">
-                            <h:inputSecret id="password" value="#{userAuthentificationBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}"/>&#xa0;
+                            <h:inputSecret id="password" value="#{customerBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}"/>&#xa0;
                             <h:message for="password" errorClass="error" styleClass="error"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group">
+                        <div class="controls">
+                            <h:messages globalOnly="true" errorClass="error" styleClass="error"/>
                         </div>
                     </div>
 
@@ -37,7 +41,7 @@
                     <div class="control-group">
                         <div class="controls">
                             <h:commandButton class="btn btn-primary" value="#{translations.login}" 
-                                             action="#{userAuthentificationBean.login(cartIsEmpty)}" type="submit"/>
+                                             action="#{customerBean.login(cartIsEmpty)}" type="submit"/>
                         </div>
                     </div>
 

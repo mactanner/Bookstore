@@ -2,10 +2,12 @@ package ch.bfh.amasoon.presenter;
 
 import ch.bfh.amasoon.commons.MessageFactory;
 import ch.bfh.amasoon.model.catalog.Book;
+import ch.bfh.amasoon.model.customer.Customer;
 import ch.bfh.amasoon.model.customer.CustomerNotFoundException;
 import ch.bfh.amasoon.model.order.CreditCardExpiredException;
 import ch.bfh.amasoon.model.order.LineItem;
 import ch.bfh.amasoon.model.order.OrderService;
+import com.google.common.base.Strings;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -17,14 +19,12 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class OrderBean implements Serializable {
-
-    @Inject
-    private UserAuthentificationBean userAuthentificationBean;
-    private List<LineItem> lineItems = new ArrayList<>();
-    private final OrderService orderService = OrderService.getInstance();
-    private String orderNumber = "";
-
     private static final String PLACE_ORDER_FAILED = "ch.bfh.amasoon.presenter.OrderBean.PLACE_ORDER_FAILED";
+    private final OrderService orderService = OrderService.getInstance();
+    @Inject
+    private CustomerBean customerBean;
+    private List<LineItem> lineItems = new ArrayList<>();
+    private String orderNumber = "";
 
     public void addToCart(Book book) {
         boolean isAdditionalBook = true;
@@ -78,7 +78,12 @@ public class OrderBean implements Serializable {
 
     public String placeOrder() {
         try {
-            orderNumber = orderService.placeOrder(userAuthentificationBean.getEmail(), lineItems);
+            String email = customerBean.getEmail();
+            if (Strings.isNullOrEmpty(email)) {
+                Customer customer = customerBean.getCustomer();
+                email = customer.getEmail();
+            }
+            orderNumber = orderService.placeOrder(email, lineItems);
             lineItems.clear();
             return "orderConfirmation";
         } catch (CustomerNotFoundException | CreditCardExpiredException ex) {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package ch.bfh.amasoon.presenter;
 
 import com.google.common.base.Strings;
@@ -18,8 +13,8 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class CatalogBean implements Serializable {
-
-    private CatalogService catalogService = CatalogService.getInstance();
+    private static final String NO_BOOKS_FOUND = "ch.bfh.amasoon.NO_BOOKS_FOUND";
+    private final CatalogService catalogService = CatalogService.getInstance();
     private String keywords;
     private List<Book> books;
     private Book selectedBook;
@@ -53,7 +48,7 @@ public class CatalogBean implements Serializable {
         } else {
             setBooks(catalogService.searchBooks(keywords.split("\\s+")));
             if (getBooks().isEmpty()) {
-                MessageFactory.info("org.books.Bookstore.NO_BOOKS_FOUND");
+                MessageFactory.info(NO_BOOKS_FOUND);
             }
         }
     }

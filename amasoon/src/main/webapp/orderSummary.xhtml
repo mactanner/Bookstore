@@ -2,7 +2,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
@@ -36,7 +35,7 @@
                     <br/><br/>
                     <h:commandButton class="btn" action="shoppingCart" value="#{translations.back}" immediate="true"/>&#xa0;
                     <h:commandButton class="btn" action="customerDetailPage" value="#{translations.edit}"/>&#xa0;
-                    <h:commandButton class="btn btn-primary" action="#{orderBean.placeOrder()}" value="#{translations.submit}"/>
+                    <h:commandButton class="btn btn-primary" action="#{orderBean.placeOrder()}" value="#{translations.submit}" rendered="#{not orderBean.cartEmpty}"/>
                 </h:form>
             </ui:define>
         </ui:composition>
