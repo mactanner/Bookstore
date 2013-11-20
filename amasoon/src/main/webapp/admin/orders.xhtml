@@ -51,7 +51,8 @@ and open the template in the editor.
                 </h:column>
 
                 <h:column>
-                    <h:commandLink class="btn btn-danger btn-small"  value="#{translations.ordersDelete}" />
+                    <h:commandLink class="btn btn-danger btn-small"  action="#{orderBean.cancelOrder(order.number)}" 
+                                   value="#{translations.ordersDelete}" rendered="#{order.status == 'open'}" />
                 </h:column>
 
             </h:dataTable>

@@ -6,6 +6,8 @@ import ch.bfh.amasoon.model.customer.Customer;
 import ch.bfh.amasoon.model.customer.CustomerNotFoundException;
 import ch.bfh.amasoon.model.order.CreditCardExpiredException;
 import ch.bfh.amasoon.model.order.LineItem;
+import ch.bfh.amasoon.model.order.OrderNotCancelableException;
+import ch.bfh.amasoon.model.order.OrderNotFoundException;
 import ch.bfh.amasoon.model.order.OrderService;
 import com.google.common.base.Strings;
 import java.io.Serializable;
@@ -19,7 +21,10 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class OrderBean implements Serializable {
+
     private static final String PLACE_ORDER_FAILED = "ch.bfh.amasoon.presenter.OrderBean.PLACE_ORDER_FAILED";
+    private static final String NO_BOOK_FOUND = "ch.bfh.amasoon.NO_BOOK_FOUND";
+    private static final String ORDER_NOT_CANCELABLE = "ch.bfh.amasoon.ORDER_NOT_CANCELABLE";
     private final OrderService orderService = OrderService.getInstance();
     @Inject
     private CustomerBean customerBean;
@@ -94,6 +99,16 @@ public class OrderBean implements Serializable {
 
     public String getOrderNumber() {
         return orderNumber;
+    }
+
+    public void cancelOrder(String orderNumber) {
+        try {
+            orderService.cancelOrder(orderNumber);
+        } catch (OrderNotFoundException ex) {
+            MessageFactory.error(NO_BOOK_FOUND, orderNumber);
+        } catch (OrderNotCancelableException ex) {
+            MessageFactory.error(ORDER_NOT_CANCELABLE, orderNumber);
+        }
     }
 
 }
