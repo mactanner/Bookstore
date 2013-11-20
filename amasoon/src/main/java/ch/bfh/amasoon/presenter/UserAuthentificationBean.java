@@ -43,29 +43,22 @@ public class UserAuthentificationBean implements Serializable {
 
     public String login(boolean isCartEmpty) {
         try {
-            if (retry < 3) {
-                customer = customerService.authenticateCustomer(email, password);
-                retry = 0;
-                if (isCartEmpty) {
-                    return "catalogSearch";
-                } else {
-                    return "orderSummary";
-
-                }
+            customer = customerService.authenticateCustomer(email, password);
+            retry = 0;
+            if (isCartEmpty) {
+                return "catalogSearch";
             } else {
-                return "toomanyretries";
+                return "orderSummary";
+
             }
         } catch (AuthenticationException ex) {
-            retry++;
             Logger.getLogger(UserAuthentificationBean.class.getName()).log(Level.SEVERE, null, ex);
-            MessageFactory.info("org.books.Bookstore.RETRYCOUNT", retry);
             return null;
         }
     }
 
     public synchronized String logout() {
         customer = null;
-        retry = 0;
         return "catalogSearch";
     }
 

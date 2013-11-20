@@ -15,16 +15,16 @@
             <ui:include src="../resources/pageTitle.xhtml">
                 <ui:param name="title" value="TODO: customer search result" />
             </ui:include>
-            <h:form rendered="#{not empty customerAdminBean.customer}">
-                <ui:include src="../customerGrid.xhtml">
+            <h:form rendered="#{not empty customerBean.customer}">
+                <ui:include src="../resources/fragments/customerGrid.xhtml">
                     <ui:param name="title" value="#{translations.customerTitle}" />
                     <ui:param name="readonly" value="true" />
                 </ui:include>
-                <ui:include src="../addressGrid.xhtml">
+                <ui:include src="../resources/fragments/addressGrid.xhtml">
                     <ui:param name="title" value="#{translations.addressTitle}" />
                     <ui:param name="readonly" value="true" />
                 </ui:include>
-                <ui:include src="../creditCardGrid.xhtml">
+                <ui:include src="../resources/fragments/creditCardGrid.xhtml">
                     <ui:param name="title" value="#{translations.creditCardTitle}" />
                     <ui:param name="readonly" value="true" />
                 </ui:include>

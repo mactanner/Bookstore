@@ -16,20 +16,20 @@
                     <ui:param name="title" value="#{translations.orderSummaryTitle}" />
                 </ui:include>
                 <br/>
-                <ui:include src="./resources/cartGrid.xhtml">
+                <ui:include src="./resources/fragments/cartGrid.xhtml">
                     <ui:param name="readonly" value="true" />
                 </ui:include>
                 <br/>
                 <h:form>
-                    <ui:include src="customerGrid.xhtml">
+                    <ui:include src="./resources/fragments/customerGrid.xhtml">
                         <ui:param name="title" value="#{translations.customerTitle}" />
                         <ui:param name="readonly" value="true" />
                     </ui:include>
-                    <ui:include src="addressGrid.xhtml">
+                    <ui:include src="./resources/fragments/addressGrid.xhtml">
                         <ui:param name="title" value="#{translations.addressTitle}" />
                         <ui:param name="readonly" value="true" />
                     </ui:include>
-                    <ui:include src="creditCardGrid.xhtml">
+                    <ui:include src="./resources/fragments/creditCardGrid.xhtml">
                         <ui:param name="title" value="#{translations.creditCardTitle}" />
                         <ui:param name="readonly" value="true" />
                     </ui:include>

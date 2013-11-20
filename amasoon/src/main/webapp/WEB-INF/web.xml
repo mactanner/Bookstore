@@ -22,7 +22,7 @@
     </session-config>
     <welcome-file-list>
         <welcome-file>catalogSearch.xhtml</welcome-file>
-        <welcome-file>customerSearch.xhtml</welcome-file>
+        <welcome-file>customerAdmin.xhtml</welcome-file>
     </welcome-file-list>
 
     <context-param>
