@@ -19,10 +19,10 @@
 
                     <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" 
                                      action="loginPage" 
-                                     type="submit" rendered="#{not orderBean.cartEmpty and empty userAuthentificationBean.customer}"/>
+                                     type="submit" rendered="#{not orderBean.cartEmpty and not customerBean.userLoggedIn}"/>
                     <h:commandButton class="btn btn-primary" value="#{translations.shoppingCartCeckOut}" 
                                      action="orderSummary" 
-                                     type="submit" rendered="#{not orderBean.cartEmpty and not empty userAuthentificationBean.customer}"/>
+                                     type="submit" rendered="#{not orderBean.cartEmpty and customerBean.userLoggedIn}"/>
                 </h:form>
             </ui:define>
         </ui:composition>
