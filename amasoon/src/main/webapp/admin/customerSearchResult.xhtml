@@ -2,7 +2,6 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
@@ -11,22 +10,19 @@
 
     <h:body>
         <ui:composition>
-            <p>TODO: orders grid</p>
-            <ui:include src="../resources/pageTitle.xhtml">
-                <ui:param name="title" value="TODO: customer search result" />
-            </ui:include>
-            <h:form rendered="#{not empty customerBean.customer}">
-                <ui:include src="../resources/fragments/customerGrid.xhtml">
+            <h:form rendered="#{not empty customerAdminBean.customer}">
+                <ui:include src="./orders.xhtml" >
+                    <ui:param name="title" value="#{translations.ordersTitle}" />
+                </ui:include>
+                <br/><br/>
+                <ui:include src="./customerGrid.xhtml">
                     <ui:param name="title" value="#{translations.customerTitle}" />
-                    <ui:param name="readonly" value="true" />
                 </ui:include>
-                <ui:include src="../resources/fragments/addressGrid.xhtml">
+                <ui:include src="./addressGrid.xhtml">
                     <ui:param name="title" value="#{translations.addressTitle}" />
-                    <ui:param name="readonly" value="true" />
                 </ui:include>
-                <ui:include src="../resources/fragments/creditCardGrid.xhtml">
+                <ui:include src="./creditCardGrid.xhtml">
                     <ui:param name="title" value="#{translations.creditCardTitle}" />
-                    <ui:param name="readonly" value="true" />
                 </ui:include>
                 <br/>
             </h:form>

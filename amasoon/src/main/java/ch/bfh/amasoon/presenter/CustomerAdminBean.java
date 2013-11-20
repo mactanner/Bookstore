@@ -3,6 +3,7 @@ package ch.bfh.amasoon.presenter;
 import ch.bfh.amasoon.model.customer.Customer;
 import ch.bfh.amasoon.model.customer.CustomerNotFoundException;
 import ch.bfh.amasoon.model.customer.CustomerService;
+import ch.bfh.amasoon.model.order.Order;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,10 +15,10 @@ import javax.inject.Named;
 @SessionScoped
 public class CustomerAdminBean implements Serializable {
 
-    @Inject
-    private CustomerBean customerBean;
     private CustomerService customerService = CustomerService.getInstance();
     private String emailToSearch;
+    private Customer customer;
+    private Order selectedOrder;
 
     public String getEmailToSearch() {
         return emailToSearch;
@@ -29,12 +30,29 @@ public class CustomerAdminBean implements Serializable {
 
     public void findCustomer() {
         try {
-            customerBean.setCustomer(customerService.findCustomer(emailToSearch));
+            customer = customerService.findCustomer(emailToSearch);
         } catch (CustomerNotFoundException ex) {
+            customer = null;
             // TODO: appropriate message handling
-            customerBean.setCustomer(null);
             Logger.getLogger(CustomerAdminBean.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
+
+    public Order getSelectedOrder() {
+        return selectedOrder;
+    }
+
+    public String displayOrder(Order order) {
+        selectedOrder = order;
+        return "/admin/orderDetails";
     }
 
 }

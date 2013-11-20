@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ext="http://amasoon.ch/jsf/taglib"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <h:head>
+        <title>Creditcard</title>
+        <h:outputStylesheet name="./css/bootstrap.css"/>
+        <h:outputStylesheet name="./css/layout.css"/>
+    </h:head>
+
+    <h:body>
+        <ui:composition>
+            <h5>#{title}</h5>
+            <h:panelGrid class="table table-condensed-fixwidth table-striped" columns="2">
+
+                <h:outputText value="#{translations.creditCardCardType}"/>
+                <h:outputText id="cardType" value="#{customerAdminBean.customer.creditCard.type}" />
+
+                <h:outputText value="#{translations.creditCardCardNumber}"/>
+                <h:outputText id="cardNumber" value="#{customerAdminBean.customer.creditCard.number}" />
+
+                <h:outputText value="#{translations.creditCardExpirationDate}"/>
+                <h:outputText value="#{customerAdminBean.customer.creditCard.expirationDate}"  >
+                    <f:convertDateTime pattern="MM-yyyy" />
+                </h:outputText>
+
+            </h:panelGrid>
+        </ui:composition>
+    </h:body>
+</html>

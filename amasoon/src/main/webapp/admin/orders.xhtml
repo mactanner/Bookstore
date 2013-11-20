@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+    <h:head />
+
+    <h:body>
+        <ui:composition>
+            <h5>#{title}</h5>
+            <h:dataTable class="table table-striped" id="data" value="#{customerAdminBean.customer.orders}" var="order" rendered="#{not empty customerAdminBean.customer.orders}">
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{translations.ordersOrderNumber}"/>
+                    </f:facet>
+                    <h:commandLink action="#{customerAdminBean.displayOrder(order)}" value="#{order.number}" />
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{translations.ordersDate}"/>
+                    </f:facet>
+                    <h:outputText value="#{order.date}">
+                        <f:convertDateTime type="date" />
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{translations.ordersAmount}"/>
+                    </f:facet>
+                    <h:outputText value="#{order.amount}">
+                        <f:convertNumber type="currency" currencySymbol="CHF" locale="de_CH" />
+                    </h:outputText>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{translations.ordersState}"/>
+                    </f:facet>
+                    <h:outputText value="#{order.status}"/>
+                </h:column>
+
+                <h:column>
+                    <h:commandLink class="btn btn-danger btn-small"  value="#{translations.ordersDelete}" />
+                </h:column>
+
+            </h:dataTable>
+
+            <h:outputText value="#{translations.ordersNoOrders}" rendered="#{empty customerAdminBean.customer.orders}" />
+
+        </ui:composition>
+    </h:body>
+
+</html>
