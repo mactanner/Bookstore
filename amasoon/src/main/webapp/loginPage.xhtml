@@ -18,16 +18,22 @@
                     <div class="control-group">
                         <h:outputLabel value="#{translations.loginPageEmail}" styleClass="control-label"/>
                         <div class="controls">
-                            <h:inputText id="email" value="#{customerBean.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}"/>&#xa0;
-                            <h:message for="email" errorClass="error" styleClass="error"/>
+                            <h:inputText id="email" value="#{customerBean.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}">
+                                <f:validator validatorId="ch.bfh.amasoon.components.EmailValidator"/>
+                                <f:ajax event="blur" render="emailMessage"/>
+                            </h:inputText>&#xa0;
+                            <h:message id="emailMessage" for="email" errorClass="error" styleClass="error"/>
                         </div>
                     </div>
 
                     <div class="control-group">
                         <h:outputLabel value="#{translations.loginPagePassword}" styleClass="control-label"/>
                         <div class="controls">
-                            <h:inputSecret id="password" value="#{customerBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}"/>&#xa0;
-                            <h:message for="password" errorClass="error" styleClass="error"/>
+                            <h:inputSecret id="password" value="#{customerBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}">
+                                <f:validator validatorId="ch.bfh.amasoon.components.PasswordValidator"/>
+                                <f:ajax event="blur" render="passwordMessage"/>
+                            </h:inputSecret>&#xa0;
+                            <h:message id="passwordMessage" for="password" errorClass="error" styleClass="error"/>
                         </div>
                     </div>
 
@@ -49,7 +55,7 @@
 
                     <div class="control-group">
                         <div class="controls">
-                            <h:outputText value="#{translations.loginPageCreateAccount}"/>&#xa0;
+                            <h:outputText value="#{translations.loginPageCreateAccount}"/>&#xa0;    
                             <h:commandLink value="#{translations.loginPageLinkToCreateAccount}" action="registrationPage" immediate="true"/><br/>
                             <h:outputText value="#{translations.loginPageForgotPassword}"/>&#xa0;
                             <h:commandLink  value="#{translations.loginPageLinkToForgotPassword}" immediate="true"/><br/>

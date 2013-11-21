@@ -4,7 +4,7 @@
 	<customer>
 		<name>Alice Smith</name>
 		<email>alice@example.org</email>
-		<password>alice</password>
+		<password>alice1</password>
 		<address>
 			<street>123 Maple Street</street>
 			<city>Mill Valley</city>
