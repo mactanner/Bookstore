@@ -24,7 +24,7 @@
                 <h:outputText value="#{translations.addressZipCode}"/>
                 <h:inputText id="zip" value="#{customerBean.customer.address.zipCode}" validatorMessage="#{javax.faces.validator.RegexValidator.NOT_MATCHED}" required="true" 
                              requiredMessage="#{translations.addressZipCodeRequired}" disabled="#{readonly}">
-                    <f:validateRegex pattern="[1-9][0-9][0-9][0-9]"/>
+                    <f:validateRegex pattern="^[1-9][0-9]{3}$|^[1-9][0-9]{4}$"/>
                 </h:inputText>
                 <h:message for="zip" errorClass="error"/>
 
