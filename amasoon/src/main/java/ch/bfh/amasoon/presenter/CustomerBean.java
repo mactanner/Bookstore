@@ -89,10 +89,10 @@ public class CustomerBean implements Serializable {
         }
     }
 
-    public String login(boolean isCartEmpty) {//TODO SB remove param
+    public String login() {
         try {
             setCustomer(customerService.authenticateCustomer(email, password));
-            if (isCartEmpty) {
+            if (orderBean.isCartEmpty()) {
                 return "catalogSearch";
             } else {
                 return "orderSummary";
