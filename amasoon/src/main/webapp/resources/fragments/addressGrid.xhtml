@@ -19,26 +19,28 @@
                 <h:outputText value="#{translations.addressStreet}"/>
                 <h:inputText id="street" value="#{customerBean.customer.address.street}" required="true" 
                              requiredMessage="#{translations.addressStreetRequired}" disabled="#{readonly}" />
-                <h:message for="street" errorClass="error"/>
+                <h:message for="street" errorClass="error" styleClass="error"/>
 
                 <h:outputText value="#{translations.addressZipCode}"/>
-                <h:inputText id="zip" value="#{customerBean.customer.address.zipCode}" validatorMessage="#{javax.faces.validator.RegexValidator.NOT_MATCHED}" required="true" 
+                <h:inputText id="zip" value="#{customerBean.customer.address.zipCode}" required="true" 
                              requiredMessage="#{translations.addressZipCodeRequired}" disabled="#{readonly}">
-                    <f:validateRegex pattern="^[1-9][0-9]{3}$|^[1-9][0-9]{4}$"/>
+                    <f:validator validatorId="ch.bfh.amasoon.components.ZipCodeValidator"/>
+                    <f:ajax event="blur" execute="@this" render="zipMessage"/>
                 </h:inputText>
-                <h:message for="zip" errorClass="error"/>
+                <h:message id="zipMessage" for="zip" errorClass="error" styleClass="error"/>
 
                 <h:outputText value="#{translations.addressCity}"/>
                 <h:inputText id="city" value="#{customerBean.customer.address.city}" required="true" 
-                             requiredMessage="#{translations.addressCityRequired}" disabled="#{readonly}"/>
-                <h:message for="city" errorClass="error"/>
+                             requiredMessage="#{translations.addressCityRequired}" disabled="#{readonly}">
+                </h:inputText>
+                <h:message for="city" errorClass="error" styleClass="error"/>
 
                 <h:outputText value="#{translations.addressCountry}"/>
                 <h:inputText id="country" value="#{customerBean.customer.address.country}" required="true"
-                             requiredMessage="#{translations.addressCountryRequired}" disabled="#{readonly}"/>
-                <h:message for="country" errorClass="error"/>
+                         requiredMessage="#{translations.addressCountryRequired}" disabled="#{readonly}"/>
+                <h:message for="country" errorClass="error" styleClass="error"/>
 
-            </h:panelGrid>
-        </ui:composition>
-    </h:body>
+        </h:panelGrid>
+    </ui:composition>
+</h:body>
 </html>
