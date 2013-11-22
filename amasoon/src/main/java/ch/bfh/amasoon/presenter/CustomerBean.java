@@ -61,7 +61,7 @@ public class CustomerBean implements Serializable {
 
     public String addCustomer() {
         if (customer == null) {
-            login(false);
+            login();
         }
         try {
             customerService.addCustomer(customer);
@@ -79,7 +79,7 @@ public class CustomerBean implements Serializable {
 
     public String updateCustomer() {
         if (customer == null) {
-            login(false);
+            login();
         }
         customerService.updateCustomer(customer);
         if (isUserLoggedIn() && !orderBean.isCartEmpty()) {
