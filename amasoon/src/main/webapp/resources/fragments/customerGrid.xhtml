@@ -32,8 +32,11 @@
 
                 <h:outputText value="#{translations.customerPassword}" rendered="#{not readonly}" />
                 <h:inputSecret id="password" value="#{customerBean.customer.password}" required="true" 
-                               requiredMessage="#{translations.customerPasswordRequired}" rendered="#{not readonly}"/>
-                <h:message for="password" errorClass="error" rendered="#{not readonly}" />
+                               requiredMessage="#{translations.customerPasswordRequired}" rendered="#{not readonly}">
+                    <f:validator validatorId="ch.bfh.amasoon.components.PasswordValidator"/>
+                    <f:ajax event="blur" render="passwordMessage"/>
+                </h:inputSecret>
+                <h:message id="passwordMessage" for="password" errorClass="error" styleClass="error" rendered="#{not readonly}" />
 
             </h:panelGrid>
         </ui:composition>

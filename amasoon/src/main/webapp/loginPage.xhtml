@@ -19,25 +19,14 @@
                     <div class="control-group">
                         <h:outputLabel value="#{translations.loginPageEmail}" styleClass="control-label"/>
                         <div class="controls">
-                            <composites:email email="#{customerBean.email}"/>&#xa0;
-                                <!--
-                            <h:inputText id="email" value="#{customerBean.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}">
-                                <f:validator validatorId="ch.bfh.amasoon.components.EmailValidator"/>
-                                <f:ajax event="blur" render="emailMessage"/>
-                            </h:inputText>&#xa0;
-                            <h:message id="emailMessage" for="email" errorClass="error" styleClass="text-error"/>
-                                -->
+                            <composites:email email="#{customerBean.email}"/>
                         </div>
                     </div>
 
                     <div class="control-group">
                         <h:outputLabel value="#{translations.loginPagePassword}" styleClass="control-label"/>
                         <div class="controls">
-                            <h:inputSecret id="password" value="#{customerBean.password}" required="true" requiredMessage="#{translations.loginPageMsgPassword}">
-                                <f:validator validatorId="ch.bfh.amasoon.components.PasswordValidator"/>
-                                <f:ajax event="blur" render="passwordMessage"/>
-                            </h:inputSecret>&#xa0;
-                            <h:message id="passwordMessage" for="password" errorClass="error" styleClass="error"/>
+                            <composites:password password="#{customerBean.password}"/>
                         </div>
                     </div>
 
