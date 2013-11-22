@@ -33,6 +33,7 @@ public class NumberSelectorRenderer extends Renderer {
         writer.writeAttribute("name", selector.getClientId(), null);
         writer.writeAttribute("onchange", "submit()", null);
         writer.writeAttribute("class", "input-mini", null);
+        writer.writeAttribute("style", "text-align:right;", null);
         for (Integer val = selector.getMin(); val <= selector.getMax(); val++) {
             writer.startElement("option", selector);
             writer.writeAttribute("value", val, null);
