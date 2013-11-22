@@ -77,6 +77,18 @@ public class CustomerBean implements Serializable {
         }
     }
 
+    public String updateCustomer() {
+        if (customer == null) {
+            login(false);
+        }
+        customerService.updateCustomer(customer);
+        if (isUserLoggedIn() && !orderBean.isCartEmpty()) {
+            return "orderSummary";
+        } else {
+            return "catalogSearch";
+        }
+    }
+
     public String login(boolean isCartEmpty) {//TODO SB remove param
         try {
             setCustomer(customerService.authenticateCustomer(email, password));
