@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <!-- INTERFACE -->
+    <cc:interface>
+        <cc:attribute name="email" required="true"/>
+    </cc:interface>
+
+    <!-- IMPLEMENTATION -->
+    <cc:implementation>
+        <h:inputText id="email" value="#{cc.attrs.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}">
+            <f:validator validatorId="ch.bfh.amasoon.components.EmailValidator"/>
+            <f:ajax event="blur" execute="@this" render="emailMessage"/>
+        </h:inputText>&#xa0;
+         <h:message id="emailMessage" for="email" errorClass="error" styleClass="error"/>
+    </cc:implementation>
+</html>

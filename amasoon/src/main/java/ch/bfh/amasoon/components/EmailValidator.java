@@ -15,7 +15,7 @@ public class EmailValidator implements Validator {
     public static final String VALIDATOR_ID = "ch.bfh.amasoon.components.EmailValidator";
 
     public static final String EMAIL_NOT_VALID = "ch.bfh.amasoon.EMAIL_NOT_VALID";
-    private static final Pattern PATTERN = Pattern.compile("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+(?:[A-Z]{2}|com|org|net|edu|gov|biz|info|jobs|museum)\\b");
+    private static final Pattern PATTERN = Pattern.compile("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+(?:[A-Z]{2}|com|ch|de|org|net|edu|gov|biz|info|jobs|museum)\\b");
 
     @Override
     public void validate(FacesContext context, UIComponent component, Object value) {

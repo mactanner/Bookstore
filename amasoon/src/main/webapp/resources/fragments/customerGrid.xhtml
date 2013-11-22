@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:composites="http://xmlns.jcp.org/jsf/composite/composites">
 
     <h:head>
         <title>Customer Grid</title>
@@ -24,9 +25,10 @@
                 <h:outputText value="#{translations.customerEmail}"/>
                 <h:inputText id="email" value="#{customerBean.customer.email}" required="true" 
                              requiredMessage="#{translations.customerEMailRequired}" disabled="#{readonly}">
-                    <f:validateRegex pattern="[\w-]+(?:\.[\w-]+)*@(?:[\w-]+\.)+[a-zA-Z]{2,7}"/>
+                    <f:validator validatorId="ch.bfh.amasoon.components.EmailValidator"/>
+                    <f:ajax event="blur" execute="@this" render="emailMessage"/>
                 </h:inputText>
-                <h:message for="email" errorClass="error"/>
+                <h:message id="emailMessage" for="email" errorClass="error" styleClass="error"/>
 
                 <h:outputText value="#{translations.customerPassword}" rendered="#{not readonly}" />
                 <h:inputSecret id="password" value="#{customerBean.customer.password}" required="true" 

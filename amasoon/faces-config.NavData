@@ -1,6 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Scene Scope="Project" version="2">
+<Scene Scope="Faces Configuration Only" version="2">
     <Scope Scope="Faces Configuration Only"/>
-    <Scope Scope="Project"/>
+    <Scope Scope="Project">
+        <Node id="admin/orderDetails.xhtml" x="400" y="450" zoom="true"/>
+        <Node id="resources/fragments/addressGrid.xhtml" x="900" y="600" zoom="true"/>
+        <Node id="resources/copyright.xhtml" x="400" y="600" zoom="true"/>
+        <Node id="resources/adminHeader.xhtml" x="400" y="750" zoom="true"/>
+        <Node id="resources/userHeader.xhtml" x="900" y="150" zoom="true"/>
+        <Node id="admin/customerSearchResult.xhtml" x="1650" y="300" zoom="true"/>
+        <Node id="bookDetails.xhtml" x="150" y="750" zoom="true"/>
+        <Node id="resources/fragments/cartGrid.xhtml" x="900" y="750" zoom="true"/>
+        <Node id="admin/customerGrid.xhtml" x="650" y="750" zoom="true"/>
+        <Node id="error.xhtml" x="1150" y="600" zoom="true"/>
+        <Node id="resources/adminTemplate.xhtml" x="150" y="1050" zoom="true"/>
+        <Node id="catalogSearch.xhtml" x="1150" y="150" zoom="true"/>
+        <Node id="resources/footer.xhtml" x="650" y="150" zoom="true"/>
+        <Node id="customerDetailPage.xhtml" x="1400" y="300" zoom="true"/>
+        <Node id="registrationPage.xhtml" x="1150" y="300" zoom="true"/>
+        <Node id="resources/userTemplate.xhtml" x="900" y="300" zoom="true"/>
+        <Node id="admin/addressGrid.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="orderSummary.xhtml" x="400" y="300" zoom="true"/>
+        <Node id="admin/customerAdmin.xhtml" x="650" y="450" zoom="true"/>
+        <Node id="resources/fragments/cart.xhtml" x="1650" y="150" zoom="true"/>
+        <Node id="admin/orders.xhtml" x="150" y="600" zoom="true"/>
+        <Node id="resources/pageTitle.xhtml" x="650" y="300" zoom="true"/>
+        <Node id="resources/fragments/customerGrid.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="admin/customerSearch.xhtml" x="1400" y="450" zoom="true"/>
+        <Node id="resources/fragments/creditCardGrid.xhtml" x="1400" y="150" zoom="true"/>
+        <Node id="resources/fragments/bookSearchResult.xhtml" x="1900" y="150" zoom="true"/>
+        <Node id="admin/creditCardGrid.xhtml" x="150" y="150" zoom="true"/>
+        <Node id="resources/fragments/locale.xhtml" x="150" y="300" zoom="true"/>
+        <Node id="resources/fragments/bookSearch.xhtml" x="1150" y="450" zoom="true"/>
+        <Node id="shoppingCart.xhtml" x="150" y="450" zoom="true"/>
+        <Node id="orderConfirmation.xhtml" x="400" y="150" zoom="true"/>
+        <Node id="resources/fragments/login.xhtml" x="150" y="900" zoom="true"/>
+        <Node id="loginPage.xhtml" x="400" y="900" zoom="true"/>
+    </Scope>
     <Scope Scope="All Faces Configurations"/>
 </Scene>

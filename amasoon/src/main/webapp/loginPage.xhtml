@@ -3,7 +3,8 @@
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:composites="http://xmlns.jcp.org/jsf/composite/composites">
 
     <h:head>
         <title>Login Page</title>
@@ -18,11 +19,14 @@
                     <div class="control-group">
                         <h:outputLabel value="#{translations.loginPageEmail}" styleClass="control-label"/>
                         <div class="controls">
+                            <composites:email email="#{customerBean.email}"/>&#xa0;
+                                <!--
                             <h:inputText id="email" value="#{customerBean.email}" required="true" requiredMessage="#{translations.loginPageMsgEmail}">
                                 <f:validator validatorId="ch.bfh.amasoon.components.EmailValidator"/>
                                 <f:ajax event="blur" render="emailMessage"/>
                             </h:inputText>&#xa0;
-                            <h:message id="emailMessage" for="email" errorClass="error" styleClass="error"/>
+                            <h:message id="emailMessage" for="email" errorClass="error" styleClass="text-error"/>
+                                -->
                         </div>
                     </div>
 
