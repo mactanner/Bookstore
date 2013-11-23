@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import ch.bfh.amasoon.model.order.Order;
+
 public class Customer implements Serializable {
 
     private String email;

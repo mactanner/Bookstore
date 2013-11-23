@@ -4,16 +4,12 @@ import com.google.common.base.Objects;
 import java.io.Serializable;
 import java.util.Locale;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
 @Named("userLocale")
 @SessionScoped
 public class UserLocaleBean implements Serializable {
-
-    private static final FacesContext context = FacesContext.getCurrentInstance();
-    private static final ExternalContext extContext = context.getExternalContext();
     private Locale locale;
 
     public String getLocale() {
@@ -24,7 +20,7 @@ public class UserLocaleBean implements Serializable {
     }
 
     private Locale fromHttpRequest() {
-        locale = Objects.firstNonNull(extContext.getRequestLocale(), context.getViewRoot().getLocale());
+        locale = Objects.firstNonNull(FacesContext.getCurrentInstance().getExternalContext().getRequestLocale(), FacesContext.getCurrentInstance().getViewRoot().getLocale());
         return locale;
     }
 

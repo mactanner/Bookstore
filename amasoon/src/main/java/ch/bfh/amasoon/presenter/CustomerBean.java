@@ -8,6 +8,7 @@ import ch.bfh.amasoon.model.customer.CustomerAlreadyExistsException;
 import ch.bfh.amasoon.model.customer.CustomerNotFoundException;
 import ch.bfh.amasoon.model.customer.CustomerService;
 import com.google.common.base.Preconditions;
+import com.google.common.base.Strings;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -106,7 +107,7 @@ public class CustomerBean implements Serializable {
     }
 
     public boolean isUserLoggedIn() {
-        return null != customer;
+        return null != customer && !Strings.isNullOrEmpty(customer.getEmail());
     }
 
     private boolean isCartEmpty() {
