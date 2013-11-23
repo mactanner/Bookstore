@@ -2,12 +2,11 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:composites="http://xmlns.jcp.org/jsf/composite/composites">
 
     <h:head>
-        <title>Login Page</title>
+        <title>#{translations.loginPageTitle}</title>
         <f:view locale="#{userLocale.locale}"/>
     </h:head>
 
@@ -35,7 +34,7 @@
                             <h:messages globalOnly="true" errorClass="error" styleClass="error"/>
                         </div>
                     </div>
-                    
+
                     <div class="control-group">
                         <div class="controls">
                             <h:commandButton class="btn btn-primary" value="#{translations.login}" 
@@ -59,4 +58,5 @@
             </ui:define>
         </ui:composition>
     </h:body>
+
 </html>

@@ -6,7 +6,6 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
-        <title>Address Grid</title>
         <h:outputStylesheet name="./css/bootstrap.css"/>
         <h:outputStylesheet name="./css/layout.css"/>
     </h:head>
@@ -37,10 +36,10 @@
 
                 <h:outputText value="#{translations.addressCountry}"/>
                 <h:inputText id="country" value="#{customerBean.customer.address.country}" required="true"
-                         requiredMessage="#{translations.addressCountryRequired}" disabled="#{readonly}"/>
+                             requiredMessage="#{translations.addressCountryRequired}" disabled="#{readonly}"/>
                 <h:message for="country" errorClass="error" styleClass="error"/>
 
-        </h:panelGrid>
-    </ui:composition>
-</h:body>
+            </h:panelGrid>
+        </ui:composition>
+    </h:body>
 </html>

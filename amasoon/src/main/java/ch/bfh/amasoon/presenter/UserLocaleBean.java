@@ -8,13 +8,10 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.inject.Named;
 
-/**
- *
- * @author beeet
- */
 @Named("userLocale")
 @SessionScoped
 public class UserLocaleBean implements Serializable {
+
     private static final FacesContext context = FacesContext.getCurrentInstance();
     private static final ExternalContext extContext = context.getExternalContext();
     private Locale locale;

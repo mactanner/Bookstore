@@ -1,9 +1,9 @@
 package ch.bfh.amasoon.presenter;
 
-import com.google.common.base.Strings;
+import ch.bfh.amasoon.commons.MessageFactory;
 import ch.bfh.amasoon.model.catalog.Book;
 import ch.bfh.amasoon.model.catalog.CatalogService;
-import ch.bfh.amasoon.commons.MessageFactory;
+import com.google.common.base.Strings;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,6 +13,7 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class CatalogBean implements Serializable {
+
     private static final String NO_BOOKS_FOUND = "ch.bfh.amasoon.NO_BOOKS_FOUND";
     private final CatalogService catalogService = CatalogService.getInstance();
     private String keywords;
