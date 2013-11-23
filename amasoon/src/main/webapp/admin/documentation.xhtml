@@ -14,7 +14,7 @@
                 <h4>#{translations.documentation}</h4>
                 <p>
                     <h5>Project Struktur</h5>
-                    Wir haben uns für eine Komponenten-orientierte Struktur entschieden:<br/><br/>
+                    Wir haben uns für eine Komponenten-orientierte Struktur entschieden:<br/>
                     <h6>Web Pages</h6>
                     <ul>
                         <li>Alle Hauptseiten im Wurzelverzeichnis abgelegt.</li>
@@ -27,7 +27,7 @@
                         <li>Als <i>Custom Components Tags</i> haben wir den Validator <i>validateCreditCard</i> <br/>
                             sowie die Components <i>expirationDate</i> und <i>selectNumber</i> implementiert.</li>
                     </ul>
-
+                    <br/><br/>
                     <h5>Zusätzliche Features</h5>
                     <h6>Navigation</h6>
                     <ul>
@@ -43,10 +43,20 @@
                         <li>Der <i>PasswordValidator</i> stellt sicher, dass das Passwort eine gewisse Komplexität hat (mind. 6 Zeichen mit Zahlen und keinen Leerzeichen) und wird beim Verlassen des Eingabefeldes sofort ausgeführt.</li>
                         <li>Der <i>ZipCodeValidator</i> prüft die Korrektheit der PLZ und wird beim Verlassen des Eingabefeldes sofort ausgeführt.</li>
                     </ul>
+                    <h6>Login</h6>
+                    <ul>
+                        <li>Beim <i>Login</i> wird geprüft, ob es eine fehlerhaft Authentifikation ist oder ob der Benutzer noch gar nicht existiert.</li>
+                    </ul>
+                    <h6>Bootstrap</h6>
+                    <ul>
+                        <li>Für das Layouting haben wir <a href="http://bootstrap-richfaces.rhcloud.com/" target="_blank">Bootstrap CSS</a> verwendent.</li>
+                    </ul>
                     <h6>Session Timeout</h6>
                     <ul>
                         <li>Wenn die Session in ein Timeout läuft, wird der Benutzer auf eine entsprechende Error-Page umgeleitet.</li>
                     </ul>
+                    <h6>Source Verwaltung</h6>
+                    <a href="https://github.com/mactanner/Bookstore" target="_blank">Fork us on GitHub</a>
 
                 </p>
             </ui:define>
