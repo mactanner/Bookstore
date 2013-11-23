@@ -13,7 +13,6 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class CatalogBean implements Serializable {
-
     private static final String NO_BOOKS_FOUND = "ch.bfh.amasoon.NO_BOOKS_FOUND";
     private final CatalogService catalogService = CatalogService.getInstance();
     private String keywords;

@@ -21,7 +21,6 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class OrderBean implements Serializable {
-
     private static final String PLACE_ORDER_FAILED = "ch.bfh.amasoon.presenter.OrderBean.PLACE_ORDER_FAILED";
     private static final String NO_BOOK_FOUND = "ch.bfh.amasoon.NO_BOOK_FOUND";
     private static final String ORDER_NOT_CANCELABLE = "ch.bfh.amasoon.ORDER_NOT_CANCELABLE";

@@ -15,7 +15,6 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class CustomerAdminBean implements Serializable {
-
     private static final String NO_SUCH_CUSTOMER = "ch.bfh.amasoon.NO_SUCH_CUSTOMER";
     private final CustomerService customerService = CustomerService.getInstance();
     private String emailToSearch;

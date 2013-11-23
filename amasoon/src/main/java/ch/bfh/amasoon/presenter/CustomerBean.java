@@ -7,6 +7,7 @@ import ch.bfh.amasoon.model.customer.Customer;
 import ch.bfh.amasoon.model.customer.CustomerAlreadyExistsException;
 import ch.bfh.amasoon.model.customer.CustomerNotFoundException;
 import ch.bfh.amasoon.model.customer.CustomerService;
+import com.google.common.base.Preconditions;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -60,16 +61,10 @@ public class CustomerBean implements Serializable {
     }
 
     public String addCustomer() {
-        if (customer == null) {
-            login();
-        }
+        Preconditions.checkNotNull(customer);
         try {
             customerService.addCustomer(customer);
-            if (isUserLoggedIn() && !orderBean.isCartEmpty()) {
-                return "orderSummary";
-            } else {
-                return "catalogSearch";
-            }
+            return navigate();
         } catch (CustomerAlreadyExistsException ex) {
             MessageFactory.info(CUSTOMER_ALREADY_EXISTS);
             Logger.getLogger(CustomerBean.class.getName()).log(Level.SEVERE, null, ex);
@@ -78,30 +73,19 @@ public class CustomerBean implements Serializable {
     }
 
     public String updateCustomer() {
-        if (customer == null) {
-            login();
-        }
+        Preconditions.checkNotNull(customer);
         customerService.updateCustomer(customer);
-        return navigateAfterCustomerUpdates();
+        return navigate();
     }
 
-    public String navigateAfterCustomerUpdates() {
-        if (isUserLoggedIn() && !orderBean.isCartEmpty()) {
-            return "orderSummary";
-        } else {
-            return "catalogSearch";
-        }
+    public String navigate() {
+        return isUserLoggedIn() && !isCartEmpty() ? "orderSummary" : "catalogSearch";
     }
 
     public String login() {
         try {
             setCustomer(customerService.authenticateCustomer(email, password));
-            if (orderBean.isCartEmpty()) {
-                return "catalogSearch";
-            } else {
-                return "orderSummary";
-
-            }
+            return isCartEmpty() ? "catalogSearch" : "orderSummary";
         } catch (AuthenticationException ex) {
             try {
                 customerService.findCustomer(email);
@@ -123,5 +107,9 @@ public class CustomerBean implements Serializable {
 
     public boolean isUserLoggedIn() {
         return null != customer;
+    }
+
+    private boolean isCartEmpty() {
+        return orderBean.isCartEmpty();
     }
 }
