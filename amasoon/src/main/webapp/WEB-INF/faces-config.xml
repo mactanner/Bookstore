@@ -18,7 +18,6 @@
     
 
     <navigation-rule>
-        <description>authentification workflow</description>
         <from-view-id>/loginPage.xhtml</from-view-id>
         <navigation-case>
             <from-action>#{customerBean.login}</from-action>
