@@ -16,4 +16,34 @@
         </resource-bundle>
     </application>
     
+
+    <navigation-rule>
+        <description>authentification workflow</description>
+        <from-view-id>/loginPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerBean.login}</from-action>
+            <from-outcome>search</from-outcome>
+            <to-view-id>/catalogSearch.xhtml</to-view-id>
+        </navigation-case>
+        <from-view-id>/loginPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerBean.login}</from-action>
+            <from-outcome>order</from-outcome>
+            <to-view-id>/orderSummary.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-action>#{customerBean.logout}</from-action>
+            <from-outcome>logout</from-outcome>
+            <to-view-id>/catalogSearch.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>registrationPage</from-outcome>
+            <to-view-id>/registrationPage.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <description>default</description>
+            <to-view-id>/loginPage.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
 </faces-config>

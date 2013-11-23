@@ -86,7 +86,7 @@ public class CustomerBean implements Serializable {
     public String login() {
         try {
             setCustomer(customerService.authenticateCustomer(email, password));
-            return isCartEmpty() ? "catalogSearch" : "orderSummary";
+            return isCartEmpty() ? "search" : "order";
         } catch (AuthenticationException ex) {
             try {
                 customerService.findCustomer(email);
@@ -103,7 +103,7 @@ public class CustomerBean implements Serializable {
 
     public synchronized String logout() {
         setCustomer(null);
-        return "catalogSearch";
+        return "search";
     }
 
     public boolean isUserLoggedIn() {
