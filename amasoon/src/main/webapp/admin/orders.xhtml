@@ -17,14 +17,12 @@ and open the template in the editor.
         <ui:composition>
             <h5>#{title}</h5>
             <h:dataTable class="table table-striped" id="data" value="#{customerAdminBean.customer.orders}" var="order" rendered="#{not empty customerAdminBean.customer.orders}">
-
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="#{translations.ordersOrderNumber}"/>
                     </f:facet>
                     <h:commandLink action="#{customerAdminBean.displayOrder(order)}" value="#{order.number}" />
                 </h:column>
-
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="#{translations.ordersDate}"/>
@@ -33,7 +31,6 @@ and open the template in the editor.
                         <f:convertDateTime type="date" />
                     </h:outputText>
                 </h:column>
-
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="#{translations.ordersAmount}"/>
@@ -42,21 +39,19 @@ and open the template in the editor.
                         <f:convertNumber type="currency" currencySymbol="CHF" locale="de_CH" />
                     </h:outputText>
                 </h:column>
-
                 <h:column>
                     <f:facet name="header">
                         <h:outputText value="#{translations.ordersState}"/>
                     </f:facet>
-                    <h:outputText value="#{order.status}"/>
+                    <h:outputText value="#{translations.ordersStatusOpen}" rendered="#{order.status == 'open'}"/>
+                    <h:outputText value="#{translations.ordersStatusClosed}" rendered="#{order.status == 'closed'}"/>
+                    <h:outputText value="#{translations.ordersStatusCanceled}" rendered="#{order.status == 'canceled'}"/>
                 </h:column>
-
                 <h:column>
-                    <h:commandLink class="btn btn-danger btn-small"  action="#{orderBean.cancelOrder(order.number)}" 
-                                   value="#{translations.ordersDelete}" rendered="#{order.status == 'open'}" />
+                    <h:commandButton class="btn btn-danger btn-small"  action="#{orderBean.cancelOrder(order.number)}" 
+                                     value="#{translations.ordersDelete}" rendered="#{order.status == 'open'}" />
                 </h:column>
-
             </h:dataTable>
-
             <h:outputText value="#{translations.ordersNoOrders}" rendered="#{empty customerAdminBean.customer.orders}" />
 
         </ui:composition>

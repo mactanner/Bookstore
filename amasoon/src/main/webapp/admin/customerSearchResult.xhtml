@@ -2,10 +2,11 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
-        <title>todo: customer search result</title>
+        <title>#{translations.customerSearchResultTitle}</title>
     </h:head>
 
     <h:body>
@@ -15,15 +16,41 @@
                     <ui:param name="title" value="#{translations.ordersTitle}" />
                 </ui:include>
                 <br/><br/>
-                <ui:include src="./customerGrid.xhtml">
-                    <ui:param name="title" value="#{translations.customerTitle}" />
-                </ui:include>
-                <ui:include src="./addressGrid.xhtml">
-                    <ui:param name="title" value="#{translations.addressTitle}" />
-                </ui:include>
-                <ui:include src="./creditCardGrid.xhtml">
-                    <ui:param name="title" value="#{translations.creditCardTitle}" />
-                </ui:include>
+
+                <h5>#{translations.customerTitle}</h5>
+                <h:panelGrid class="table table-condensed-fixwidth table-striped" columns="2">
+                    <h:outputText value="#{translations.customerName}"/>
+                    <h:outputText id="name" value="#{customerAdminBean.customer.name}" />
+                    <h:outputText value="#{translations.customerEmail}"/>
+                    <h:outputText id="email" value="#{customerAdminBean.customer.email}"/>
+                </h:panelGrid>
+
+                <h5>#{translations.addressTitle}</h5>
+                <h:panelGrid class="table table-condensed-fixwidth table-striped" columns="2">
+                    <h:outputText value="#{translations.addressStreet}"/>
+                    <h:outputText id="street" value="#{customerAdminBean.customer.address.street}" />
+                    <h:outputText value="#{translations.addressZipCode}"/>
+                    <h:outputText id="zip" value="#{customerAdminBean.customer.address.zipCode}" />
+                    <h:outputText value="#{translations.addressCity}"/>
+                    <h:outputText id="city" value="#{customerAdminBean.customer.address.city}" />
+                    <h:outputText value="#{translations.addressCountry}"/>
+                    <h:outputText id="country" value="#{customerAdminBean.customer.address.country}" />
+                </h:panelGrid>
+
+                <h5>#{translations.creditCardTitle}</h5>
+                <h:panelGrid class="table table-condensed-fixwidth table-striped" columns="2">
+                    <h:outputText value="#{translations.creditCardCardType}"/>
+                    <h:outputText id="cardType" value="#{customerAdminBean.customer.creditCard.type}" />
+                    <h:outputText value="#{translations.creditCardCardNumber}"/>
+                    <h:outputText id="cardNumber" value="#{customerAdminBean.customer.creditCard.number}">
+                        <f:converter converterId="ch.bfh.amasoon.components.CreditCardConverter" /> 
+                    </h:outputText>
+                    <h:outputText value="#{translations.creditCardExpirationDate}"/>
+                    <h:outputText value="#{customerAdminBean.customer.creditCard.expirationDate}"  >
+                        <f:convertDateTime pattern="MM-yyyy" />
+                    </h:outputText>
+                </h:panelGrid>
+
                 <br/>
             </h:form>
         </ui:composition>

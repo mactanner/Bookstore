@@ -5,6 +5,7 @@ import ch.bfh.amasoon.model.customer.Customer;
 import ch.bfh.amasoon.model.customer.CustomerNotFoundException;
 import ch.bfh.amasoon.model.customer.CustomerService;
 import ch.bfh.amasoon.model.order.Order;
+import com.google.common.base.Strings;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +32,12 @@ public class CustomerAdminBean implements Serializable {
 
     public void findCustomer() {
         try {
-            customer = customerService.findCustomer(emailToSearch);
+            if (Strings.isNullOrEmpty(emailToSearch)) {
+                customer = null;
+            } else {
+                customer = customerService.findCustomer(emailToSearch);
+
+            }
         } catch (CustomerNotFoundException ex) {
             customer = null;
             MessageFactory.info(NO_SUCH_CUSTOMER);

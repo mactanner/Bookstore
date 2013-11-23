@@ -6,7 +6,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <h:head>
-        <title>Creditcard</title>
+        <title>#{translations.orderDetailsTitle}</title>
         <h:outputStylesheet name="./css/bootstrap.css"/>
         <h:outputStylesheet name="./css/layout.css"/>
     </h:head>
@@ -49,7 +49,6 @@
                             </f:facet>
                             <h:outputText value="#{lineItem.quantity}" />
                         </h:column>
-
                     </h:dataTable>
 
                     <h5>#{translations.customerTitle}</h5>
@@ -84,7 +83,7 @@
                         </h:outputText>
                     </h:panelGrid>
 
-                    <h:commandButton class="btn" action="/admin/customerAdmin" value="#{translations.back}"/>
+                    <h:commandButton class="btn" action="/admin/customerAdmin" value="#{translations.back}"/>&#xa0;
 
                 </h:form>
             </ui:define>
