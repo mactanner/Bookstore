@@ -82,6 +82,10 @@ public class CustomerBean implements Serializable {
             login();
         }
         customerService.updateCustomer(customer);
+        return navigateAfterCustomerUpdates();
+    }
+
+    public String navigateAfterCustomerUpdates() {
         if (isUserLoggedIn() && !orderBean.isCartEmpty()) {
             return "orderSummary";
         } else {
