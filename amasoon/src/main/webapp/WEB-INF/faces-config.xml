@@ -15,7 +15,7 @@
             <var>translations</var>
         </resource-bundle>
     </application>
-    
+
 
     <navigation-rule>
         <from-view-id>/loginPage.xhtml</from-view-id>
@@ -44,5 +44,45 @@
             <to-view-id>/loginPage.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-    
+
+    <navigation-rule>
+        <from-view-id>/bookDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerBean.logout()}</from-action>
+            <to-view-id>/bookDetails.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/customerDetailPage.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerBean.logout()}</from-action>
+            <to-view-id>/catalogSearch.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/orderConfirmation.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerBean.logout()}</from-action>
+            <to-view-id>/catalogSearch.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/orderSummary.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerBean.logout()}</from-action>
+            <to-view-id>/catalogSearch.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
+    <navigation-rule>
+        <from-view-id>/shoppingCart.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{customerBean.logout()}</from-action>
+            <to-view-id>/shoppingCart.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+
 </faces-config>
