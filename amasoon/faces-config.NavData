@@ -17,15 +17,15 @@
         <Node id="resources/footer.xhtml" x="650" y="150" zoom="true"/>
         <Node id="customerDetailPage.xhtml" x="1400" y="300" zoom="true"/>
         <Node id="registrationPage.xhtml" x="1150" y="300" zoom="true"/>
-        <Node id="resources/userTemplate.xhtml" x="900" y="300" zoom="true"/>
         <Node id="admin/addressGrid.xhtml" x="650" y="600" zoom="true"/>
+        <Node id="resources/userTemplate.xhtml" x="900" y="300" zoom="true"/>
         <Node id="orderSummary.xhtml" x="400" y="300" zoom="true"/>
         <Node id="admin/customerAdmin.xhtml" x="650" y="450" zoom="true"/>
         <Node id="resources/fragments/cart.xhtml" x="1650" y="150" zoom="true"/>
         <Node id="admin/orders.xhtml" x="150" y="600" zoom="true"/>
-        <Node id="resources/pageTitle.xhtml" x="650" y="300" zoom="true"/>
-        <Node id="resources/fragments/customerGrid.xhtml" x="900" y="450" zoom="true"/>
         <Node id="admin/customerSearch.xhtml" x="1400" y="450" zoom="true"/>
+        <Node id="resources/fragments/customerGrid.xhtml" x="900" y="450" zoom="true"/>
+        <Node id="resources/pageTitle.xhtml" x="650" y="300" zoom="true"/>
         <Node id="resources/fragments/creditCardGrid.xhtml" x="1400" y="150" zoom="true"/>
         <Node id="resources/fragments/bookSearchResult.xhtml" x="1900" y="150" zoom="true"/>
         <Node id="admin/creditCardGrid.xhtml" x="150" y="150" zoom="true"/>
